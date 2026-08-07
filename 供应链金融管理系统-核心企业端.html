@@ -1,0 +1,2048 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>供应链金融管理系统 - 核心企业端</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: "PingFang SC", "Microsoft YaHei", "Helvetica Neue", Arial, sans-serif;
+            font-size: 14px;
+            color: #262626;
+            background-color: #F0F2F5;
+        }
+
+        /* Layout */
+        .layout {
+            display: flex;
+            min-height: 100vh;
+        }
+
+        /* Sidebar */
+        .sidebar {
+            width: 240px;
+            background-color: #001529;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .sidebar-logo {
+            display: flex;
+            align-items: center;
+            padding: 20px 16px;
+            border-bottom: 1px solid rgba(255,255,255,0.1);
+        }
+
+        .logo-icon {
+            width: 40px;
+            height: 40px;
+            background: linear-gradient(135deg, #FAAD14 0%, #FFC53D 100%);
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-right: 12px;
+        }
+
+        .logo-icon i {
+            color: white;
+            font-size: 20px;
+        }
+
+        .logo-text {
+            font-size: 16px;
+            font-weight: bold;
+            color: #FFFFFF;
+        }
+
+        .system-badge {
+            background: #1890FF;
+            color: white;
+            padding: 2px 8px;
+            border-radius: 4px;
+            font-size: 10px;
+            margin-left: 8px;
+        }
+
+        /* Navigation Menu */
+        .nav-menu {
+            flex: 1;
+            padding: 8px 0;
+            overflow-y: auto;
+        }
+
+        .nav-item {
+            display: flex;
+            align-items: center;
+            padding: 12px 16px;
+            color: rgba(255,255,255,0.65);
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        .nav-item:hover {
+            color: #FFFFFF;
+            background: rgba(255,255,255,0.08);
+        }
+
+        .nav-item.active {
+            color: #FFFFFF;
+            background: #1890FF;
+        }
+
+        .nav-item > i {
+            width: 24px;
+            margin-right: 12px;
+            text-align: center;
+            font-size: 16px;
+        }
+
+        .nav-item > span {
+            flex: 1;
+        }
+
+        .nav-item .arrow {
+            font-size: 12px;
+            transition: transform 0.3s;
+        }
+
+        .nav-item.expanded .arrow {
+            transform: rotate(180deg);
+        }
+
+        /* Submenu */
+        .submenu {
+            display: none;
+            background: rgba(0,0,0,0.15);
+        }
+
+        .submenu.show {
+            display: block;
+        }
+
+        .submenu-item {
+            display: flex;
+            align-items: center;
+            padding: 10px 16px 10px 52px;
+            color: rgba(255,255,255,0.65);
+            cursor: pointer;
+            transition: all 0.3s;
+            font-size: 13px;
+        }
+
+        .submenu-item:hover {
+            color: #FFFFFF;
+        }
+
+        .submenu-item.active {
+            color: #FFFFFF;
+            background: rgba(24,144,255,0.3);
+        }
+
+        /* Main Content */
+        .main-content {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+        }
+
+        /* Header */
+        .header {
+            height: 50px;
+            background-color: #FFFFFF;
+            border-bottom: 1px solid #D9D9D9;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 0 24px;
+        }
+
+        .header-left {
+            display: flex;
+            align-items: center;
+        }
+
+        .hamburger {
+            font-size: 20px;
+            margin-right: 16px;
+            cursor: pointer;
+            color: #595959;
+        }
+
+        .header-right {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+            color: #595959;
+            font-size: 13px;
+        }
+
+        .header-right .divider {
+            color: #D9D9D9;
+        }
+
+        .header-right a {
+            color: #595959;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+
+        .header-right a:hover {
+            color: #1890FF;
+        }
+
+        .user-info {
+            display: flex;
+            align-items: center;
+            gap: 4px;
+        }
+
+        /* Content Area */
+        .content-area {
+            flex: 1;
+            padding: 24px;
+            overflow-y: auto;
+        }
+
+        /* Breadcrumb Tabs */
+        .breadcrumb-tabs {
+            display: flex;
+            gap: 8px;
+            margin-bottom: 16px;
+        }
+
+        .tab {
+            display: flex;
+            align-items: center;
+            padding: 8px 16px;
+            background-color: #FFFFFF;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 14px;
+            transition: all 0.3s;
+        }
+
+        .tab:hover {
+            background-color: #F5F5F5;
+        }
+
+        .tab.active {
+            background-color: #1890FF;
+            color: white;
+        }
+
+        .tab i {
+            margin-right: 8px;
+        }
+
+        .tab.closeable .close-btn {
+            margin-left: 8px;
+            cursor: pointer;
+            opacity: 0.7;
+        }
+
+        .tab.closeable .close-btn:hover {
+            opacity: 1;
+        }
+
+        /* Page Content Container */
+        .page-content {
+            display: none;
+        }
+
+        .page-content.active {
+            display: block;
+        }
+
+        /* Page Header / Breadcrumb */
+        .page-breadcrumb {
+            margin-bottom: 20px;
+            font-size: 14px;
+            color: #595959;
+        }
+
+        .page-breadcrumb a {
+            color: #1890FF;
+            text-decoration: none;
+        }
+
+        .page-breadcrumb a:hover {
+            text-decoration: underline;
+        }
+
+        .page-breadcrumb span {
+            margin: 0 8px;
+            color: #D9D9D9;
+        }
+
+        .page-breadcrumb strong {
+            color: #262626;
+        }
+
+        /* Form Page Styles */
+        .form-page {
+            background-color: #FFFFFF;
+            border-radius: 8px;
+            padding: 24px;
+        }
+
+        .form-title {
+            font-size: 18px;
+            font-weight: 500;
+            color: #262626;
+            margin-bottom: 24px;
+        }
+
+        .form-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 24px;
+        }
+
+        .back-link {
+            color: #1890FF;
+            font-size: 14px;
+            text-decoration: none;
+            cursor: pointer;
+        }
+
+        .back-link:hover {
+            text-decoration: underline;
+        }
+
+        /* Form Sections */
+        .form-section {
+            border: 1px solid #E8E8E8;
+            border-radius: 4px;
+            margin-bottom: 20px;
+        }
+
+        .form-section-header {
+            padding: 12px 16px;
+            background-color: #FAFAFA;
+            border-bottom: 1px solid #E8E8E8;
+            font-weight: 500;
+            color: #262626;
+            border-left: 3px solid #1890FF;
+        }
+
+        .form-section-body {
+            padding: 20px 16px;
+        }
+
+        /* Form Grid */
+        .form-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 16px 24px;
+        }
+
+        .form-grid-2 {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 16px 24px;
+        }
+
+        .form-grid-full {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 16px;
+        }
+
+        .form-group {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .form-group label {
+            font-size: 14px;
+            color: #595959;
+            margin-bottom: 8px;
+        }
+
+        .form-group label .required {
+            color: #F56C6C;
+            margin-right: 4px;
+        }
+
+        .form-group input,
+        .form-group select,
+        .form-group textarea {
+            padding: 8px 12px;
+            border: 1px solid #D9D9D9;
+            border-radius: 4px;
+            font-size: 14px;
+            color: #262626;
+            background-color: #FFFFFF;
+            transition: border-color 0.3s;
+        }
+
+        .form-group input:focus,
+        .form-group select:focus,
+        .form-group textarea:focus {
+            outline: none;
+            border-color: #1890FF;
+        }
+
+        .form-group input::placeholder,
+        .form-group textarea::placeholder {
+            color: #BFBFBF;
+        }
+
+        .form-group textarea {
+            resize: vertical;
+            min-height: 80px;
+        }
+
+        .form-group select {
+            cursor: pointer;
+            appearance: none;
+            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 12 12'%3E%3Cpath fill='%23595959' d='M2 4l4 4 4-4'/%3E%3C/svg%3E");
+            background-repeat: no-repeat;
+            background-position: right 12px center;
+            padding-right: 32px;
+        }
+
+        /* Table Section */
+        .table-section {
+            background-color: #FFFFFF;
+            border-radius: 8px;
+            margin-bottom: 24px;
+            overflow: hidden;
+        }
+
+        .section-title {
+            padding: 16px 20px;
+            font-size: 16px;
+            font-weight: 500;
+            color: #262626;
+            border-bottom: 1px solid #E8E8E8;
+        }
+
+        .table-wrapper {
+            overflow-x: auto;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        thead {
+            background-color: #FAFAFA;
+        }
+
+        th {
+            padding: 12px 16px;
+            text-align: left;
+            font-weight: 500;
+            color: #595959;
+            font-size: 14px;
+            white-space: nowrap;
+        }
+
+        td {
+            padding: 12px 16px;
+            color: #262626;
+            font-size: 14px;
+            border-bottom: 1px solid #E8E8E8;
+        }
+
+        tbody tr:hover {
+            background-color: #FAFAFA;
+        }
+
+        tbody tr:last-child td {
+            border-bottom: none;
+        }
+
+        /* Empty State */
+        .empty-state {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding: 60px 20px;
+            color: #8C8C8C;
+        }
+
+        .empty-icon {
+            width: 80px;
+            height: 80px;
+            margin-bottom: 16px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .empty-icon svg {
+            width: 100%;
+            height: 100%;
+        }
+
+        .empty-text {
+            font-size: 14px;
+            color: #8C8C8C;
+        }
+
+        /* Page Footer */
+        .page-footer {
+            text-align: center;
+            padding: 20px;
+            color: #8C8C8C;
+            font-size: 12px;
+        }
+
+        /* Home Content - Announcements Only */
+        .home-content {
+            display: none;
+        }
+
+        .home-content.active {
+            display: flex;
+            flex-direction: column;
+            gap: 24px;
+        }
+
+        /* Content Card - Announcements */
+        .content-card {
+            background-color: #FFFFFF;
+            border-radius: 8px;
+            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+        }
+
+        .card-header {
+            padding: 16px 20px;
+            border-bottom: 1px solid #E8E8E8;
+            font-size: 16px;
+            font-weight: 500;
+            color: #262626;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .card-header .more-link {
+            font-size: 13px;
+            color: #1890FF;
+            cursor: pointer;
+        }
+
+        .card-body {
+            padding: 20px;
+            min-height: 200px;
+        }
+
+        /* Announcement List */
+        .announcement-list {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .announcement-item {
+            display: flex;
+            align-items: center;
+            padding: 12px 0;
+            border-bottom: 1px dashed #E8E8E8;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        .announcement-item:last-child {
+            border-bottom: none;
+        }
+
+        .announcement-item:hover {
+            background-color: #F5F5F5;
+            margin: 0 -20px;
+            padding: 12px 20px;
+        }
+
+        .announcement-tag {
+            padding: 2px 8px;
+            border-radius: 4px;
+            font-size: 12px;
+            margin-right: 12px;
+        }
+
+        .announcement-tag.important {
+            background-color: #FFF1F0;
+            color: #FF4D4F;
+        }
+
+        .announcement-tag.normal {
+            background-color: #F5F5F5;
+            color: #8C8C8C;
+        }
+
+        .announcement-title {
+            flex: 1;
+            color: #262626;
+            font-size: 14px;
+        }
+
+        .announcement-date {
+            color: #8C8C8C;
+            font-size: 13px;
+            margin-left: 16px;
+        }
+
+        /* Query Page Styles */
+        .query-page {
+            background-color: #FFFFFF;
+            border-radius: 8px;
+            padding: 24px;
+        }
+
+        /* Search Filters */
+        .query-filters {
+            margin-bottom: 20px;
+        }
+
+        .filter-row {
+            display: flex;
+            align-items: flex-end;
+            gap: 16px;
+            flex-wrap: wrap;
+        }
+
+        .filter-item {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .filter-item label {
+            white-space: nowrap;
+            font-size: 14px;
+            color: #595959;
+        }
+
+        .filter-item input,
+        .filter-item select {
+            padding: 8px 12px;
+            border: 1px solid #D9D9D9;
+            border-radius: 4px;
+            font-size: 14px;
+            color: #262626;
+            background-color: #FFFFFF;
+        }
+
+        .filter-item input:focus,
+        .filter-item select:focus {
+            outline: none;
+            border-color: #1890FF;
+        }
+
+        .filter-item input[type="date"] {
+            width: 150px;
+        }
+
+        .filter-buttons {
+            display: flex;
+            gap: 8px;
+            margin-left: auto;
+        }
+
+        /* Batch Action Bar */
+        .batch-action-bar {
+            display: flex;
+            gap: 12px;
+            margin-bottom: 20px;
+        }
+
+        /* Pagination */
+        .pagination {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 16px 0;
+            border-top: 1px solid #E8E8E8;
+            margin-top: 20px;
+        }
+
+        .pagination-info {
+            font-size: 14px;
+            color: #595959;
+        }
+
+        .pagination-controls {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .pagination-btn {
+            width: 32px;
+            height: 32px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border: 1px solid #D9D9D9;
+            border-radius: 4px;
+            background: #FFFFFF;
+            color: #595959;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        .pagination-btn:hover:not(:disabled) {
+            border-color: #1890FF;
+            color: #1890FF;
+        }
+
+        .pagination-btn:disabled {
+            cursor: not-allowed;
+            color: #D9D9D9;
+        }
+
+        .pagination-btn.active {
+            background: #1890FF;
+            border-color: #1890FF;
+            color: #FFFFFF;
+        }
+
+        .page-size-select {
+            padding: 4px 8px;
+            border: 1px solid #D9D9D9;
+            border-radius: 4px;
+            font-size: 14px;
+            color: #595959;
+            background: #FFFFFF;
+            cursor: pointer;
+        }
+
+        .page-jump {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            font-size: 14px;
+            color: #595959;
+        }
+
+        .page-jump input {
+            width: 50px;
+            padding: 4px 8px;
+            border: 1px solid #D9D9D9;
+            border-radius: 4px;
+            font-size: 14px;
+            text-align: center;
+        }
+
+        .page-jump input:focus {
+            outline: none;
+            border-color: #1890FF;
+        }
+
+        /* Action Links in Table */
+        .action-link {
+            color: #1890FF;
+            cursor: pointer;
+            text-decoration: none;
+            margin-right: 8px;
+        }
+
+        .action-link:hover {
+            text-decoration: underline;
+        }
+
+        .action-link:last-child {
+            margin-right: 0;
+        }
+
+        /* Status Badges */
+        .status-badge {
+            display: inline-block;
+            padding: 2px 8px;
+            border-radius: 4px;
+            font-size: 12px;
+        }
+
+        .status-badge.success {
+            background-color: rgba(82, 196, 26, 0.1);
+            color: #52C41A;
+        }
+
+        .status-badge.warning {
+            background-color: rgba(250, 173, 20, 0.1);
+            color: #FAAD14;
+        }
+
+        .status-badge.orange {
+            background-color: rgba(250, 173, 20, 0.15);
+            color: #FA8C16;
+        }
+
+        /* Form Actions */
+        .form-actions {
+            display: flex;
+            justify-content: center;
+            gap: 16px;
+            margin-top: 24px;
+            padding-top: 24px;
+            border-top: 1px solid #E8E8E8;
+        }
+
+        .btn {
+            padding: 10px 24px;
+            border-radius: 4px;
+            font-size: 14px;
+            cursor: pointer;
+            transition: all 0.3s;
+            border: none;
+        }
+
+        .btn-primary {
+            background-color: #1890FF;
+            color: #FFFFFF;
+        }
+
+        .btn-primary:hover {
+            background-color: #40A9FF;
+        }
+
+        .btn-default {
+            background-color: #FFFFFF;
+            color: #595959;
+            border: 1px solid #D9D9D9;
+        }
+
+        .btn-default:hover {
+            border-color: #1890FF;
+            color: #1890FF;
+        }
+
+        /* Floating Avatar */
+        .floating-avatar {
+            position: fixed;
+            bottom: 24px;
+            right: 24px;
+            width: 48px;
+            height: 48px;
+            border-radius: 50%;
+            overflow: hidden;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+            cursor: pointer;
+            transition: transform 0.3s;
+        }
+
+        .floating-avatar:hover {
+            transform: scale(1.1);
+        }
+
+        .floating-avatar img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        /* Sidebar Toggle */
+        .sidebar.collapsed {
+            width: 0;
+            overflow: hidden;
+            transition: width 0.3s;
+        }
+
+        /* Scrollbar */
+        .nav-menu::-webkit-scrollbar {
+            width: 4px;
+        }
+
+        .nav-menu::-webkit-scrollbar-track {
+            background: rgba(0,0,0,0.1);
+        }
+
+        .nav-menu::-webkit-scrollbar-thumb {
+            background: rgba(255,255,255,0.2);
+            border-radius: 2px;
+        }
+
+        /* Personal Center Styles */
+        .personal-center {
+            display: none;
+        }
+
+        .personal-center.active {
+            display: block;
+        }
+
+        .profile-header {
+            background: linear-gradient(135deg, #1890FF 0%, #722ED1 100%);
+            border-radius: 8px;
+            padding: 24px;
+            margin-bottom: 24px;
+            display: flex;
+            gap: 24px;
+        }
+
+        .profile-left {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            min-width: 120px;
+        }
+
+        .profile-avatar {
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            background-color: rgba(255,255,255,0.2);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 16px;
+        }
+
+        .profile-avatar i {
+            font-size: 40px;
+            color: rgba(255,255,255,0.8);
+        }
+
+        .profile-username {
+            color: rgba(255,255,255,0.8);
+            font-size: 14px;
+            margin-bottom: 8px;
+        }
+
+        .profile-company {
+            color: #FFFFFF;
+            font-size: 16px;
+            font-weight: bold;
+            text-align: center;
+            margin-bottom: 16px;
+            max-width: 150px;
+        }
+
+        .profile-download-btn {
+            padding: 8px 16px;
+            background-color: #FFFFFF;
+            color: #1890FF;
+            border: none;
+            border-radius: 4px;
+            font-size: 12px;
+            cursor: pointer;
+            white-space: nowrap;
+        }
+
+        .profile-info-grid {
+            flex: 1;
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 16px;
+        }
+
+        .profile-info-item {
+            display: flex;
+            align-items: flex-start;
+            gap: 12px;
+        }
+
+        .profile-info-icon {
+            width: 40px;
+            height: 40px;
+            border-radius: 8px;
+            background-color: rgba(255,255,255,0.2);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+        }
+
+        .profile-info-icon i {
+            color: #FFFFFF;
+            font-size: 18px;
+        }
+
+        .profile-info-content {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .profile-info-label {
+            color: rgba(255,255,255,0.7);
+            font-size: 12px;
+            margin-bottom: 4px;
+        }
+
+        .profile-info-value {
+            color: #FFFFFF;
+            font-size: 14px;
+        }
+
+        .security-panel {
+            background-color: #FFFFFF;
+            border-radius: 8px;
+            overflow: hidden;
+        }
+
+        .tab-nav {
+            display: flex;
+            border-bottom: 1px solid #E8E8E8;
+            padding: 0 24px;
+        }
+
+        .tab-item {
+            padding: 16px 24px;
+            font-size: 14px;
+            color: #595959;
+            cursor: pointer;
+            border-bottom: 2px solid transparent;
+            transition: all 0.3s;
+        }
+
+        .tab-item:hover {
+            color: #262626;
+        }
+
+        .tab-item.active {
+            color: #262626;
+            font-weight: 500;
+            border-bottom-color: #1890FF;
+        }
+
+        .tab-content {
+            padding: 24px;
+            display: none;
+        }
+
+        .tab-content.active {
+            display: block;
+        }
+
+        .security-item {
+            display: flex;
+            align-items: center;
+            padding: 16px 0;
+            border-bottom: 1px solid #E8E8E8;
+        }
+
+        .security-item:last-child {
+            border-bottom: none;
+        }
+
+        .security-item-label {
+            width: 120px;
+            font-size: 14px;
+            color: #262626;
+        }
+
+        .security-item-content {
+            flex: 1;
+            font-size: 14px;
+            color: #595959;
+        }
+
+        .security-item-action {
+            color: #1890FF;
+            cursor: pointer;
+        }
+
+        .security-item-action:hover {
+            text-decoration: underline;
+        }
+
+        /* Auth Form Grid */
+        .auth-form-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 20px 40px;
+        }
+
+        .auth-form-item {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .auth-form-item label {
+            font-size: 14px;
+            color: #595959;
+            margin-bottom: 8px;
+        }
+
+        .auth-form-item .value {
+            font-size: 14px;
+            color: #262626;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .auth-form-item .btn-small {
+            padding: 4px 12px;
+            background-color: #1890FF;
+            color: #FFFFFF;
+            border: none;
+            border-radius: 4px;
+            font-size: 12px;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <div class="layout">
+        <!-- Sidebar -->
+        <aside class="sidebar" id="sidebar">
+            <div class="sidebar-logo">
+                <div class="logo-icon">
+                    <i class="fas fa-yen-sign"></i>
+                </div>
+                <span class="logo-text">供应链金融管理系统</span>
+                <span class="system-badge">核心企业端</span>
+            </div>
+
+            <nav class="nav-menu">
+                <!-- 1. 首页 -->
+                <div class="nav-item active" data-page="home">
+                    <i class="fas fa-home"></i>
+                    <span>首页</span>
+                </div>
+
+                <!-- 2. 货物批次管理 -->
+                <div class="nav-item expanded" onclick="toggleSubmenu(this)">
+                    <i class="fas fa-boxes"></i>
+                    <span>货物批次管理</span>
+                    <i class="fas fa-chevron-down arrow"></i>
+                </div>
+                <div class="submenu show">
+                    <div class="submenu-item" data-page="create-batch">创建货物批次</div>
+                    <div class="submenu-item" data-page="batch-list">货物批次列表</div>
+                </div>
+
+                <!-- 3. 客户账户管理 -->
+                <div class="nav-item expanded" onclick="toggleSubmenu(this)">
+                    <i class="fas fa-users-cog"></i>
+                    <span>客户账户管理</span>
+                    <i class="fas fa-chevron-down arrow"></i>
+                </div>
+                <div class="submenu show">
+                    <div class="submenu-item" data-page="withdraw-audit">提现风险审核</div>
+                    <div class="submenu-item" data-page="customer-flow">客户流水查询</div>
+                    <div class="submenu-item" data-page="account-list">账户列表</div>
+                </div>
+
+                <!-- 4. 个人中心 -->
+                <div class="nav-item" data-page="personal">
+                    <i class="fas fa-user-circle"></i>
+                    <span>个人中心</span>
+                </div>
+
+                <!-- 5. 标签管理 -->
+                <div class="nav-item" data-page="tag-management">
+                    <i class="fas fa-tags"></i>
+                    <span>标签管理</span>
+                </div>
+
+                <!-- 6. 自动交易 -->
+                <div class="nav-item" onclick="toggleSubmenu(this)">
+                    <i class="fas fa-robot"></i>
+                    <span>自动交易</span>
+                    <i class="fas fa-chevron-down arrow"></i>
+                </div>
+                <div class="submenu">
+                    <div class="submenu-item" data-page="contract-template">合同模板管理</div>
+                    <div class="submenu-item" data-page="auto-trade-list">自动交易列表</div>
+                </div>
+            </nav>
+        </aside>
+
+        <!-- Main Content -->
+        <main class="main-content">
+            <!-- Header -->
+            <header class="header">
+                <div class="header-left">
+                    <div class="hamburger" onclick="toggleSidebar()">
+                        <i class="fas fa-bars"></i>
+                    </div>
+                </div>
+                <div class="header-right">
+                    <div class="user-info">
+                        <i class="fas fa-user"></i>
+                        <span>管理员</span>
+                    </div>
+                    <span class="divider">|</span>
+                    <span>业务日期：2026-08-07</span>
+                    <span class="divider">|</span>
+                    <a href="#">修改密码</a>
+                    <span class="divider">|</span>
+                    <a href="#">
+                        <i class="fas fa-sync-alt"></i>
+                        退出
+                    </a>
+                </div>
+            </header>
+
+            <!-- Content Area -->
+            <div class="content-area">
+                <!-- Breadcrumb Tabs -->
+                <div class="breadcrumb-tabs">
+                    <div class="tab active" data-page="home">
+                        <i class="fas fa-home"></i>
+                        <span>首页</span>
+                    </div>
+                </div>
+
+                <!-- Home Content -->
+                <div class="home-content active" id="homeContent">
+                    <!-- Announcements -->
+                    <div class="content-card">
+                        <div class="card-header">
+                            <span>通知公告</span>
+                            <span class="more-link">查看更多</span>
+                        </div>
+                        <div class="card-body">
+                            <div class="announcement-list">
+                                <div class="announcement-item">
+                                    <span class="announcement-tag important">重要</span>
+                                    <span class="announcement-title">系统将于本周六进行升级维护，届时部分功能将暂停使用</span>
+                                    <span class="announcement-date">2026-08-06</span>
+                                </div>
+                                <div class="announcement-item">
+                                    <span class="announcement-tag normal">普通</span>
+                                    <span class="announcement-title">关于规范货权转让操作流程的通知</span>
+                                    <span class="announcement-date">2026-08-05</span>
+                                </div>
+                                <div class="announcement-item">
+                                    <span class="announcement-tag important">重要</span>
+                                    <span class="announcement-title">新增金蝶产品模块上线公告</span>
+                                    <span class="announcement-date">2026-08-03</span>
+                                </div>
+                                <div class="announcement-item">
+                                    <span class="announcement-tag normal">普通</span>
+                                    <span class="announcement-title">交易账户管理功能优化说明</span>
+                                    <span class="announcement-date">2026-08-01</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 创建货物批次 Page -->
+                <div class="page-content" id="create-batchPage">
+                    <div class="form-page">
+                        <h2 class="form-title">创建货物批次</h2>
+
+                        <!-- 基本信息 -->
+                        <div class="form-section">
+                            <div class="form-section-header">基本信息</div>
+                            <div class="form-section-body">
+                                <div class="form-grid">
+                                    <div class="form-group">
+                                        <label><span class="required">*</span>批次号</label>
+                                        <input type="text" placeholder="系统自动生成" disabled>
+                                    </div>
+                                    <div class="form-group">
+                                        <label><span class="required">*</span>批次标题</label>
+                                        <input type="text" placeholder="请输入">
+                                    </div>
+                                    <div class="form-group">
+                                        <label><span class="required">*</span>批次类型</label>
+                                        <select>
+                                            <option value="">请选择</option>
+                                            <option value="goods">货物</option>
+                                            <option value="materials">原材料</option>
+                                        </select>
+                                    </div>
+                                    <div class="form-group">
+                                        <label><span class="required">*</span>仓库名称</label>
+                                        <input type="text" placeholder="请输入">
+                                    </div>
+                                    <div class="form-group">
+                                        <label><span class="required">*</span>货物数量</label>
+                                        <input type="text" placeholder="请输入">
+                                    </div>
+                                    <div class="form-group">
+                                        <label><span class="required">*</span>单位</label>
+                                        <select>
+                                            <option value="">请选择</option>
+                                            <option value="ton">吨</option>
+                                            <option value="kg">千克</option>
+                                            <option value="piece">件</option>
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="form-grid-full" style="margin-top: 16px;">
+                                    <div class="form-group">
+                                        <label>备注</label>
+                                        <textarea placeholder="请输入备注信息"></textarea>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- 客户信息 -->
+                        <div class="form-section">
+                            <div class="form-section-header">客户信息</div>
+                            <div class="form-section-body">
+                                <div class="form-grid">
+                                    <div class="form-group">
+                                        <label><span class="required">*</span>买方企业</label>
+                                        <input type="text" placeholder="请输入">
+                                    </div>
+                                    <div class="form-group">
+                                        <label><span class="required">*</span>卖方企业</label>
+                                        <input type="text" placeholder="请输入">
+                                    </div>
+                                    <div class="form-group">
+                                        <label><span class="required">*</span>交易金额（元）</label>
+                                        <input type="text" placeholder="请输入">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Form Actions -->
+                        <div class="form-actions">
+                            <button class="btn btn-primary">提交</button>
+                            <button class="btn btn-default">重置</button>
+                        </div>
+
+                        <!-- Page Footer -->
+                        <div class="page-footer" style="padding-top: 40px;">
+                            鄂ICP备2024059520号-1
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 货物批次列表 Page -->
+                <div class="page-content" id="batch-listPage">
+                    <div class="query-page">
+                        <div class="query-filters">
+                            <div class="filter-row">
+                                <div class="filter-item">
+                                    <label>批次号</label>
+                                    <input type="text" placeholder="请输入">
+                                </div>
+                                <div class="filter-item">
+                                    <label>批次标题</label>
+                                    <input type="text" placeholder="请输入">
+                                </div>
+                                <div class="filter-item">
+                                    <label>批次状态</label>
+                                    <select>
+                                        <option value="">请选择</option>
+                                        <option value="pending">待审核</option>
+                                        <option value="approved">已通过</option>
+                                        <option value="rejected">已驳回</option>
+                                    </select>
+                                </div>
+                                <div class="filter-buttons">
+                                    <button class="btn btn-default">重置</button>
+                                    <button class="btn btn-primary">查询</button>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Table Section -->
+                        <div class="table-section">
+                            <div class="table-wrapper">
+                                <table>
+                                    <thead>
+                                        <tr>
+                                            <th>#</th>
+                                            <th>批次号</th>
+                                            <th>批次标题</th>
+                                            <th>批次类型</th>
+                                            <th>买方企业</th>
+                                            <th>卖方企业</th>
+                                            <th>交易金额（元）</th>
+                                            <th>批次状态</th>
+                                            <th>创建时间</th>
+                                            <th>操作</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <td colspan="10">
+                                                <div class="empty-state">
+                                                    <div class="empty-icon">
+                                                        <svg viewBox="0 0 80 80" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                                            <rect x="15" y="35" width="50" height="30" rx="3" stroke="#D9D9D9" stroke-width="2" fill="none"/>
+                                                            <path d="M15 45L40 60L65 45" stroke="#D9D9D9" stroke-width="2"/>
+                                                            <line x1="25" y1="50" x2="55" y2="50" stroke="#D9D9D9" stroke-width="2" stroke-linecap="round"/>
+                                                            <line x1="25" y1="56" x2="40" y2="56" stroke="#D9D9D9" stroke-width="2" stroke-linecap="round"/>
+                                                            <path d="M30 20L35 30M40 15L40 25M50 20L45 30" stroke="#1890FF" stroke-width="2" stroke-linecap="round"/>
+                                                        </svg>
+                                                    </div>
+                                                    <span class="empty-text">暂无数据</span>
+                                                </div>
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+
+                        <!-- Pagination -->
+                        <div class="pagination">
+                            <div class="pagination-info">总条数：0</div>
+                            <div class="pagination-controls">
+                                <select class="page-size-select">
+                                    <option value="10">10</option>
+                                    <option value="20">20</option>
+                                    <option value="50">50</option>
+                                </select>
+                                <button class="pagination-btn" disabled><i class="fas fa-chevron-left"></i></button>
+                                <button class="pagination-btn active">1</button>
+                                <button class="pagination-btn" disabled><i class="fas fa-chevron-right"></i></button>
+                                <div class="page-jump">
+                                    <span>跳至</span>
+                                    <input type="text" value="1">
+                                    <span>页</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Page Footer -->
+                        <div class="page-footer">
+                            鄂ICP备2024059520号-1
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 提现风险审核 Page -->
+                <div class="page-content" id="withdraw-auditPage">
+                    <div class="query-page">
+                        <div class="batch-action-bar">
+                            <button class="btn btn-primary">查询</button>
+                        </div>
+
+                        <!-- Table Section -->
+                        <div class="table-section">
+                            <div class="table-wrapper">
+                                <table>
+                                    <thead>
+                                        <tr>
+                                            <th>#</th>
+                                            <th>提现账号</th>
+                                            <th>账户名称</th>
+                                            <th>开户行</th>
+                                            <th>提现金额（元）</th>
+                                            <th>提现手续费（元）</th>
+                                            <th>审批状态</th>
+                                            <th>驳回理由</th>
+                                            <th>创建时间</th>
+                                            <th>操作</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <td colspan="10">
+                                                <div class="empty-state">
+                                                    <div class="empty-icon">
+                                                        <svg viewBox="0 0 80 80" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                                            <rect x="15" y="35" width="50" height="30" rx="3" stroke="#D9D9D9" stroke-width="2" fill="none"/>
+                                                            <path d="M15 45L40 60L65 45" stroke="#D9D9D9" stroke-width="2"/>
+                                                            <line x1="25" y1="50" x2="55" y2="50" stroke="#D9D9D9" stroke-width="2" stroke-linecap="round"/>
+                                                            <line x1="25" y1="56" x2="40" y2="56" stroke="#D9D9D9" stroke-width="2" stroke-linecap="round"/>
+                                                            <path d="M30 20L35 30M40 15L40 25M50 20L45 30" stroke="#1890FF" stroke-width="2" stroke-linecap="round"/>
+                                                        </svg>
+                                                    </div>
+                                                    <span class="empty-text">暂无数据</span>
+                                                </div>
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+
+                        <!-- Page Footer -->
+                        <div class="page-footer">
+                            鄂ICP备2024059520号-1
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 客户流水查询 Page -->
+                <div class="page-content" id="customer-flowPage">
+                    <div class="query-page">
+                        <div class="query-filters">
+                            <div class="filter-row">
+                                <div class="filter-item">
+                                    <label>客户名称</label>
+                                    <input type="text" placeholder="请输入">
+                                </div>
+                                <div class="filter-item">
+                                    <label>开始时间</label>
+                                    <input type="date" value="2026-08-01">
+                                </div>
+                                <div class="filter-item">
+                                    <label>结束时间</label>
+                                    <input type="date" value="2026-08-31">
+                                </div>
+                                <div class="filter-buttons">
+                                    <button class="btn btn-default">重置</button>
+                                    <button class="btn btn-primary">查询</button>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Table Section -->
+                        <div class="table-section">
+                            <div class="table-wrapper">
+                                <table>
+                                    <thead>
+                                        <tr>
+                                            <th>#</th>
+                                            <th>客户名称</th>
+                                            <th>流水号</th>
+                                            <th>交易类型</th>
+                                            <th>交易金额（元）</th>
+                                            <th>账户余额（元）</th>
+                                            <th>交易时间</th>
+                                            <th>备注</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <td colspan="8">
+                                                <div class="empty-state">
+                                                    <div class="empty-icon">
+                                                        <svg viewBox="0 0 80 80" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                                            <rect x="15" y="35" width="50" height="30" rx="3" stroke="#D9D9D9" stroke-width="2" fill="none"/>
+                                                            <path d="M15 45L40 60L65 45" stroke="#D9D9D9" stroke-width="2"/>
+                                                            <line x1="25" y1="50" x2="55" y2="50" stroke="#D9D9D9" stroke-width="2" stroke-linecap="round"/>
+                                                            <line x1="25" y1="56" x2="40" y2="56" stroke="#D9D9D9" stroke-width="2" stroke-linecap="round"/>
+                                                            <path d="M30 20L35 30M40 15L40 25M50 20L45 30" stroke="#1890FF" stroke-width="2" stroke-linecap="round"/>
+                                                        </svg>
+                                                    </div>
+                                                    <span class="empty-text">暂无数据</span>
+                                                </div>
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+
+                        <!-- Page Footer -->
+                        <div class="page-footer">
+                            鄂ICP备2024059520号-1
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 账户列表 Page -->
+                <div class="page-content" id="account-listPage">
+                    <div class="query-page">
+                        <div class="batch-action-bar">
+                            <button class="btn btn-primary">查询</button>
+                        </div>
+
+                        <!-- Table Section -->
+                        <div class="table-section">
+                            <div class="table-wrapper">
+                                <table>
+                                    <thead>
+                                        <tr>
+                                            <th>#</th>
+                                            <th>账户名称</th>
+                                            <th>账户号码</th>
+                                            <th>开户行</th>
+                                            <th>账户余额（元）</th>
+                                            <th>账户状态</th>
+                                            <th>创建时间</th>
+                                            <th>操作</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <td colspan="8">
+                                                <div class="empty-state">
+                                                    <div class="empty-icon">
+                                                        <svg viewBox="0 0 80 80" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                                            <rect x="15" y="35" width="50" height="30" rx="3" stroke="#D9D9D9" stroke-width="2" fill="none"/>
+                                                            <path d="M15 45L40 60L65 45" stroke="#D9D9D9" stroke-width="2"/>
+                                                            <line x1="25" y1="50" x2="55" y2="50" stroke="#D9D9D9" stroke-width="2" stroke-linecap="round"/>
+                                                            <line x1="25" y1="56" x2="40" y2="56" stroke="#D9D9D9" stroke-width="2" stroke-linecap="round"/>
+                                                            <path d="M30 20L35 30M40 15L40 25M50 20L45 30" stroke="#1890FF" stroke-width="2" stroke-linecap="round"/>
+                                                        </svg>
+                                                    </div>
+                                                    <span class="empty-text">暂无数据</span>
+                                                </div>
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+
+                        <!-- Page Footer -->
+                        <div class="page-footer">
+                            鄂ICP备2024059520号-1
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 个人中心 Page -->
+                <div class="page-content personal-center" id="personalPage">
+                    <!-- Profile Header -->
+                    <div class="profile-header">
+                        <div class="profile-left">
+                            <div class="profile-avatar">
+                                <i class="fas fa-user"></i>
+                            </div>
+                            <div class="profile-username">用户名:</div>
+                            <div class="profile-company">核心企业名称</div>
+                        </div>
+                        <div class="profile-info-grid">
+                            <div class="profile-info-item">
+                                <div class="profile-info-icon">
+                                    <i class="fas fa-building"></i>
+                                </div>
+                                <div class="profile-info-content">
+                                    <div class="profile-info-label">统一社会信用代码</div>
+                                    <div class="profile-info-value">91420000XXXXXXXXXX</div>
+                                </div>
+                            </div>
+                            <div class="profile-info-item">
+                                <div class="profile-info-icon">
+                                    <i class="fas fa-mobile-alt"></i>
+                                </div>
+                                <div class="profile-info-content">
+                                    <div class="profile-info-label">手机号码</div>
+                                    <div class="profile-info-value">13300000000</div>
+                                </div>
+                            </div>
+                            <div class="profile-info-item">
+                                <div class="profile-info-icon">
+                                    <i class="fas fa-envelope"></i>
+                                </div>
+                                <div class="profile-info-content">
+                                    <div class="profile-info-label">电子邮箱</div>
+                                    <div class="profile-info-value">enterprise@example.com</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Security Panel -->
+                    <div class="security-panel">
+                        <div class="tab-nav">
+                            <div class="tab-item active" data-tab="security">安全信息</div>
+                            <div class="tab-item" data-tab="auth">实名认证</div>
+                        </div>
+
+                        <!-- 安全信息 Tab -->
+                        <div class="tab-content active" id="securityTab">
+                            <div class="security-item">
+                                <div class="security-item-label">登录密码</div>
+                                <div class="security-item-content">已设置。密码至少6位字符，支持数字、字母和除空格外的特殊字符。</div>
+                                <div class="security-item-action">修改</div>
+                            </div>
+                            <div class="security-item">
+                                <div class="security-item-label">安全手机</div>
+                                <div class="security-item-content">已绑定：13300000000</div>
+                                <div class="security-item-action">修改</div>
+                            </div>
+                        </div>
+
+                        <!-- 实名认证 Tab -->
+                        <div class="tab-content" id="authTab">
+                            <div class="auth-form-grid">
+                                <div class="auth-form-item">
+                                    <label>账号类型</label>
+                                    <div class="value">企业账号</div>
+                                </div>
+                                <div class="auth-form-item">
+                                    <label>认证状态</label>
+                                    <div class="value">
+                                        <span>已认证</span>
+                                        <button class="btn-small">解绑</button>
+                                    </div>
+                                </div>
+                                <div class="auth-form-item">
+                                    <label>公司名称</label>
+                                    <div class="value">核心企业名称</div>
+                                </div>
+                                <div class="auth-form-item">
+                                    <label>认证时间</label>
+                                    <div class="value">2026-06-01 10:00:00</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Page Footer -->
+                    <div class="page-footer">
+                        鄂ICP备2024059520号-1
+                    </div>
+                </div>
+
+                <!-- 标签管理 Page -->
+                <div class="page-content" id="tag-managementPage">
+                    <div class="query-page">
+                        <div class="batch-action-bar">
+                            <button class="btn btn-primary"><i class="fas fa-plus"></i> 新增标签</button>
+                            <button class="btn btn-primary">查询</button>
+                        </div>
+
+                        <!-- Table Section -->
+                        <div class="table-section">
+                            <div class="table-wrapper">
+                                <table>
+                                    <thead>
+                                        <tr>
+                                            <th>#</th>
+                                            <th>标签名称</th>
+                                            <th>标签类型</th>
+                                            <th>标签描述</th>
+                                            <th>创建时间</th>
+                                            <th>操作</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <td colspan="6">
+                                                <div class="empty-state">
+                                                    <div class="empty-icon">
+                                                        <svg viewBox="0 0 80 80" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                                            <rect x="15" y="35" width="50" height="30" rx="3" stroke="#D9D9D9" stroke-width="2" fill="none"/>
+                                                            <path d="M15 45L40 60L65 45" stroke="#D9D9D9" stroke-width="2"/>
+                                                            <line x1="25" y1="50" x2="55" y2="50" stroke="#D9D9D9" stroke-width="2" stroke-linecap="round"/>
+                                                            <line x1="25" y1="56" x2="40" y2="56" stroke="#D9D9D9" stroke-width="2" stroke-linecap="round"/>
+                                                            <path d="M30 20L35 30M40 15L40 25M50 20L45 30" stroke="#1890FF" stroke-width="2" stroke-linecap="round"/>
+                                                        </svg>
+                                                    </div>
+                                                    <span class="empty-text">暂无数据</span>
+                                                </div>
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+
+                        <!-- Page Footer -->
+                        <div class="page-footer">
+                            鄂ICP备2024059520号-1
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 合同模板管理 Page -->
+                <div class="page-content" id="contract-templatePage">
+                    <div class="query-page">
+                        <div class="batch-action-bar">
+                            <button class="btn btn-primary"><i class="fas fa-plus"></i> 新增模板</button>
+                            <button class="btn btn-primary">查询</button>
+                        </div>
+
+                        <!-- Table Section -->
+                        <div class="table-section">
+                            <div class="table-wrapper">
+                                <table>
+                                    <thead>
+                                        <tr>
+                                            <th>#</th>
+                                            <th>模板名称</th>
+                                            <th>模板类型</th>
+                                            <th>关联批次</th>
+                                            <th>模板状态</th>
+                                            <th>创建时间</th>
+                                            <th>操作</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <td colspan="7">
+                                                <div class="empty-state">
+                                                    <div class="empty-icon">
+                                                        <svg viewBox="0 0 80 80" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                                            <rect x="15" y="35" width="50" height="30" rx="3" stroke="#D9D9D9" stroke-width="2" fill="none"/>
+                                                            <path d="M15 45L40 60L65 45" stroke="#D9D9D9" stroke-width="2"/>
+                                                            <line x1="25" y1="50" x2="55" y2="50" stroke="#D9D9D9" stroke-width="2" stroke-linecap="round"/>
+                                                            <line x1="25" y1="56" x2="40" y2="56" stroke="#D9D9D9" stroke-width="2" stroke-linecap="round"/>
+                                                            <path d="M30 20L35 30M40 15L40 25M50 20L45 30" stroke="#1890FF" stroke-width="2" stroke-linecap="round"/>
+                                                        </svg>
+                                                    </div>
+                                                    <span class="empty-text">暂无数据</span>
+                                                </div>
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+
+                        <!-- Page Footer -->
+                        <div class="page-footer">
+                            鄂ICP备2024059520号-1
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 自动交易列表 Page -->
+                <div class="page-content" id="auto-trade-listPage">
+                    <div class="query-page">
+                        <div class="query-filters">
+                            <div class="filter-row">
+                                <div class="filter-item">
+                                    <label>交易编号</label>
+                                    <input type="text" placeholder="请输入">
+                                </div>
+                                <div class="filter-item">
+                                    <label>交易状态</label>
+                                    <select>
+                                        <option value="">请选择</option>
+                                        <option value="pending">待执行</option>
+                                        <option value="executing">执行中</option>
+                                        <option value="completed">已完成</option>
+                                        <option value="failed">执行失败</option>
+                                    </select>
+                                </div>
+                                <div class="filter-buttons">
+                                    <button class="btn btn-default">重置</button>
+                                    <button class="btn btn-primary">查询</button>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Table Section -->
+                        <div class="table-section">
+                            <div class="table-wrapper">
+                                <table>
+                                    <thead>
+                                        <tr>
+                                            <th>#</th>
+                                            <th>交易编号</th>
+                                            <th>交易类型</th>
+                                            <th>关联批次</th>
+                                            <th>交易金额（元）</th>
+                                            <th>交易状态</th>
+                                            <th>执行时间</th>
+                                            <th>操作</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <td colspan="8">
+                                                <div class="empty-state">
+                                                    <div class="empty-icon">
+                                                        <svg viewBox="0 0 80 80" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                                            <rect x="15" y="35" width="50" height="30" rx="3" stroke="#D9D9D9" stroke-width="2" fill="none"/>
+                                                            <path d="M15 45L40 60L65 45" stroke="#D9D9D9" stroke-width="2"/>
+                                                            <line x1="25" y1="50" x2="55" y2="50" stroke="#D9D9D9" stroke-width="2" stroke-linecap="round"/>
+                                                            <line x1="25" y1="56" x2="40" y2="56" stroke="#D9D9D9" stroke-width="2" stroke-linecap="round"/>
+                                                            <path d="M30 20L35 30M40 15L40 25M50 20L45 30" stroke="#1890FF" stroke-width="2" stroke-linecap="round"/>
+                                                        </svg>
+                                                    </div>
+                                                    <span class="empty-text">暂无数据</span>
+                                                </div>
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+
+                        <!-- Page Footer -->
+                        <div class="page-footer">
+                            鄂ICP备2024059520号-1
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <!-- Floating Avatar -->
+    <div class="floating-avatar">
+        <img src="https://api.dicebear.com/7.x/avataaars/svg?seed=Felix" alt="用户头像">
+    </div>
+
+    <script>
+        // Toggle sidebar
+        function toggleSidebar() {
+            const sidebar = document.getElementById('sidebar');
+            sidebar.classList.toggle('collapsed');
+        }
+
+        // Toggle submenu
+        function toggleSubmenu(element) {
+            const submenu = element.nextElementSibling;
+            element.classList.toggle('expanded');
+            submenu.classList.toggle('show');
+        }
+
+        // Page navigation
+        function showPage(pageName) {
+            // Hide all pages
+            document.querySelectorAll('.page-content').forEach(p => p.classList.remove('active'));
+            document.getElementById('homeContent').classList.remove('active');
+            document.querySelectorAll('.personal-center').forEach(p => p.classList.remove('active'));
+            
+            // Show target page
+            const pageElement = document.getElementById(pageName + 'Page');
+            if (pageElement) {
+                pageElement.classList.add('active');
+                if (pageName === 'personal') {
+                    pageElement.classList.add('active');
+                }
+            }
+        }
+
+        // Navigation item click
+        document.querySelectorAll('.nav-item[data-page]').forEach(item => {
+            item.addEventListener('click', function() {
+                const page = this.dataset.page;
+                
+                // Update active state
+                document.querySelectorAll('.nav-item').forEach(i => i.classList.remove('active'));
+                this.classList.add('active');
+                
+                // Update tabs and show page
+                updateTabs(page, this.querySelector('span').textContent, this.querySelector('i').className);
+                
+                // Show corresponding page
+                showPage(page);
+            });
+        });
+
+        // Submenu item click
+        document.querySelectorAll('.submenu-item').forEach(item => {
+            item.addEventListener('click', function() {
+                const page = this.dataset.page;
+                if (!page) return;
+                
+                // Update active state
+                document.querySelectorAll('.submenu-item').forEach(i => i.classList.remove('active'));
+                this.classList.add('active');
+                
+                // Update tabs
+                updateTabs(page, this.textContent.trim(), 'fas fa-file-alt');
+                
+                // Show corresponding page
+                showPage(page);
+            });
+        });
+
+        // Update tabs
+        function updateTabs(page, title, iconClass) {
+            const tabsContainer = document.querySelector('.breadcrumb-tabs');
+            const homeTab = tabsContainer.querySelector('.tab.active');
+            
+            if (page === 'home') {
+                // Show home content
+                document.getElementById('homeContent').classList.add('active');
+                homeTab.innerHTML = `<i class="${iconClass}"></i><span>${title}</span>`;
+                
+                // Remove other tabs
+                tabsContainer.querySelectorAll('.tab.closeable').forEach(t => t.remove());
+                return;
+            }
+            
+            // Hide home content if not already
+            document.getElementById('homeContent').classList.remove('active');
+            
+            // Find existing tab
+            let existingTab = tabsContainer.querySelector(`.tab[data-page="${page}"]`);
+            
+            if (existingTab) {
+                // Switch to existing tab
+                tabsContainer.querySelectorAll('.tab').forEach(t => t.classList.remove('active'));
+                existingTab.classList.add('active');
+            } else {
+                // Create new tab
+                const newTab = document.createElement('div');
+                newTab.className = 'tab closeable';
+                newTab.dataset.page = page;
+                newTab.innerHTML = `
+                    <i class="${iconClass}"></i>
+                    <span>${title}</span>
+                    <span class="close-btn"><i class="fas fa-times"></i></span>
+                `;
+                
+                // Add close functionality
+                newTab.querySelector('.close-btn').addEventListener('click', function(e) {
+                    e.stopPropagation();
+                    newTab.remove();
+                    if (tabsContainer.querySelectorAll('.tab').length === 0) {
+                        // Go back to home
+                        document.querySelector('.nav-item[data-page="home"]').click();
+                    }
+                });
+                
+                // Tab click
+                newTab.addEventListener('click', function() {
+                    tabsContainer.querySelectorAll('.tab').forEach(t => t.classList.remove('active'));
+                    this.classList.add('active');
+                    
+                    const pageName = this.dataset.page;
+                    
+                    // Hide all pages
+                    document.querySelectorAll('.page-content').forEach(p => p.classList.remove('active'));
+                    document.getElementById('homeContent').classList.remove('active');
+                    document.querySelectorAll('.personal-center').forEach(p => p.classList.remove('active'));
+                    
+                    if (pageName === 'home') {
+                        document.getElementById('homeContent').classList.add('active');
+                        document.querySelectorAll('.nav-item').forEach(i => i.classList.remove('active'));
+                        document.querySelector('.nav-item[data-page="home"]').classList.add('active');
+                    } else {
+                        const targetPage = document.getElementById(pageName + 'Page');
+                        if (targetPage) {
+                            targetPage.classList.add('active');
+                            if (pageName === 'personal') {
+                                targetPage.classList.add('active');
+                            }
+                        }
+                        document.querySelectorAll('.nav-item').forEach(i => i.classList.remove('active'));
+                        document.querySelectorAll('.submenu-item').forEach(i => i.classList.remove('active'));
+                    }
+                });
+                
+                tabsContainer.appendChild(newTab);
+                tabsContainer.querySelectorAll('.tab').forEach(t => t.classList.remove('active'));
+                newTab.classList.add('active');
+            }
+            
+            // Deactivate home nav item
+            document.querySelector('.nav-item[data-page="home"]').classList.remove('active');
+        }
+
+        // Tab close functionality
+        document.querySelectorAll('.tab.closeable .close-btn').forEach(btn => {
+            btn.addEventListener('click', function(e) {
+                e.stopPropagation();
+                const tab = this.closest('.tab');
+                const page = tab.dataset.page;
+                tab.remove();
+                
+                // Hide the corresponding page
+                const pageElement = document.getElementById(page + 'Page');
+                if (pageElement) {
+                    pageElement.classList.remove('active');
+                }
+                
+                if (document.querySelectorAll('.tab.closeable').length === 0) {
+                    document.querySelector('.nav-item[data-page="home"]').click();
+                }
+            });
+        });
+
+        // Personal center tab switching
+        document.querySelectorAll('.tab-item[data-tab]').forEach(tab => {
+            tab.addEventListener('click', function() {
+                const tabName = this.dataset.tab;
+                
+                // Update tab active state
+                document.querySelectorAll('.tab-item[data-tab]').forEach(t => t.classList.remove('active'));
+                this.classList.add('active');
+                
+                // Update tab content
+                document.querySelectorAll('.tab-content').forEach(content => content.classList.remove('active'));
+                document.getElementById(tabName + 'Tab').classList.add('active');
+            });
+        });
+    </script>
+</body>
+</html>
