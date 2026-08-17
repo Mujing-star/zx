@@ -1395,7 +1395,25 @@
                 <div class="page-content" id="user-permissionPage">
                     <div class="query-page">
                         <div class="page-title">普通用户菜单权限</div>
-                        
+
+                        <!-- 企业选择 -->
+                        <div class="filter-row" style="margin-bottom: 16px;">
+                            <div class="filter-item">
+                                <label>选择企业</label>
+                                <select style="min-width: 300px;">
+                                    <option value="">请选择企业</option>
+                                    <option value="company1">宜昌润砾鑫商贸有限公司</option>
+                                    <option value="company2">武汉恒达钢铁有限公司</option>
+                                    <option value="company3">湖北昌达物流有限公司</option>
+                                    <option value="company4">武汉钢铁集团有限公司</option>
+                                    <option value="company5">湖北交投物流集团有限公司</option>
+                                </select>
+                            </div>
+                            <div class="filter-buttons">
+                                <button class="btn btn-primary">查询</button>
+                            </div>
+                        </div>
+
                         <!-- 权限配置区域 -->
                         <div class="permission-config">
                             <!-- 主菜单列表 -->
@@ -2185,14 +2203,15 @@
                                             <th>公司账号</th>
                                             <th>创建日期</th>
                                             <th>状态</th>
-                                            <th>客户费用</th>
+                                            <th>一级费用</th>
+                                            <th>二级费用</th>
                                             <th>平台费用</th>
                                             <th>操作</th>
                                         </tr>
                                     </thead>
                                     <tbody>
                                         <tr>
-                                            <td colspan="11">
+                                            <td colspan="12">
                                                 <div class="empty-state">
                                                     <div class="empty-icon">
                                                         <svg viewBox="0 0 80 80" fill="none" xmlns="http://www.w3.org/2000/svg">
