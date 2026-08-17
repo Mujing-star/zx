@@ -1387,6 +1387,312 @@
             transition: width 0.3s;
         }
 
+        /* Small Button */
+        .btn-sm {
+            padding: 4px 12px;
+            font-size: 12px;
+            border-radius: 4px;
+        }
+
+        /* Modal Overlay */
+        .modal-overlay {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.45);
+            z-index: 9999;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .modal-overlay.active {
+            display: flex;
+        }
+
+        .modal-dialog {
+            background-color: #FFFFFF;
+            border-radius: 8px;
+            box-shadow: 0 6px 16px rgba(0, 0, 0, 0.12);
+            max-width: 900px;
+            width: 90%;
+            max-height: 85vh;
+            overflow-y: auto;
+            position: relative;
+        }
+
+        .modal-dialog.modal-lg {
+            max-width: 1000px;
+        }
+
+        .modal-dialog.modal-sm {
+            max-width: 600px;
+        }
+
+        .modal-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 16px 24px;
+            border-bottom: 1px solid #E8E8E8;
+        }
+
+        .modal-title {
+            font-size: 16px;
+            font-weight: 500;
+            color: #262626;
+        }
+
+        .modal-close {
+            cursor: pointer;
+            font-size: 18px;
+            color: #999;
+            transition: color 0.3s;
+            background: none;
+            border: none;
+            padding: 0;
+        }
+
+        .modal-close:hover {
+            color: #333;
+        }
+
+        .modal-body {
+            padding: 24px;
+        }
+
+        .modal-footer {
+            display: flex;
+            justify-content: center;
+            gap: 16px;
+            padding: 16px 24px;
+            border-top: 1px solid #E8E8E8;
+        }
+
+        /* Modal Tab Nav */
+        .modal-tab-nav {
+            display: flex;
+            border-bottom: 1px solid #E8E8E8;
+            margin-bottom: 20px;
+        }
+
+        .modal-tab-item {
+            padding: 8px 20px;
+            cursor: pointer;
+            font-size: 14px;
+            color: #595959;
+            border-bottom: 2px solid transparent;
+            transition: all 0.3s;
+        }
+
+        .modal-tab-item.active {
+            color: #1890FF;
+            border-bottom-color: #1890FF;
+        }
+
+        /* Document Upload Table */
+        .doc-upload-table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        .doc-upload-table th {
+            background-color: #FAFAFA;
+            padding: 10px 12px;
+            font-size: 13px;
+            font-weight: 500;
+            color: #595959;
+            border: 1px solid #E8E8E8;
+            text-align: left;
+        }
+
+        .doc-upload-table td {
+            padding: 10px 12px;
+            font-size: 13px;
+            color: #262626;
+            border: 1px solid #E8E8E8;
+        }
+
+        .doc-file-item {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            margin-bottom: 4px;
+        }
+
+        .doc-file-item:last-child {
+            margin-bottom: 0;
+        }
+
+        .doc-file-item i.fa-file-alt {
+            color: #1890FF;
+        }
+
+        .doc-file-item .download-icon {
+            color: #1890FF;
+            cursor: pointer;
+        }
+
+        .doc-file-item .delete-icon {
+            color: #FF4D4F;
+            cursor: pointer;
+        }
+
+        .upload-link {
+            color: #1890FF;
+            cursor: pointer;
+            font-size: 13px;
+        }
+
+        .upload-link:hover {
+            text-decoration: underline;
+        }
+
+        /* Radio Group */
+        .radio-group {
+            display: flex;
+            gap: 20px;
+            align-items: center;
+        }
+
+        .radio-item {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            cursor: pointer;
+            font-size: 14px;
+            color: #262626;
+        }
+
+        .radio-item input[type="radio"] {
+            cursor: pointer;
+        }
+
+        /* Filter Grid */
+        .filter-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 16px;
+            margin-bottom: 16px;
+        }
+
+        .filter-grid .filter-item {
+            display: flex;
+            flex-direction: column;
+            gap: 6px;
+        }
+
+        .filter-grid .filter-item label {
+            font-size: 13px;
+            color: #595959;
+        }
+
+        .filter-grid .filter-item input,
+        .filter-grid .filter-item select {
+            padding: 8px 12px;
+            border: 1px solid #D9D9D9;
+            border-radius: 4px;
+            font-size: 14px;
+            color: #262626;
+            background-color: #FFFFFF;
+        }
+
+        .filter-grid .filter-item input:focus,
+        .filter-grid .filter-item select:focus {
+            outline: none;
+            border-color: #1890FF;
+        }
+
+        .filter-grid-full-row {
+            grid-column: 1 / -1;
+            display: flex;
+            gap: 12px;
+            justify-content: flex-end;
+        }
+
+        /* Date Range Input */
+        .date-range-input {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .date-range-input input[type="date"] {
+            padding: 8px 12px;
+            border: 1px solid #D9D9D9;
+            border-radius: 4px;
+            font-size: 14px;
+            color: #262626;
+        }
+
+        /* Action Link Group */
+        .action-link-group {
+            display: flex;
+            gap: 8px;
+            align-items: center;
+            flex-wrap: nowrap;
+        }
+
+        .action-link-group .action-link {
+            white-space: nowrap;
+        }
+
+        .action-link-group .action-divider {
+            color: #D9D9D9;
+        }
+
+        /* Export Button Colors */
+        .btn-pdf {
+            background-color: #FAAD14;
+            color: #FFFFFF;
+            border: none;
+        }
+
+        .btn-pdf:hover {
+            background-color: #FFC53D;
+        }
+
+        .btn-excel {
+            background-color: #52C41A;
+            color: #FFFFFF;
+            border: none;
+        }
+
+        .btn-excel:hover {
+            background-color: #73D13D;
+        }
+
+        .btn-outline {
+            background-color: #FFFFFF;
+            color: #1890FF;
+            border: 1px solid #1890FF;
+        }
+
+        .btn-outline:hover {
+            background-color: #E6F7FF;
+        }
+
+        /* Table status badge */
+        .status-badge.success {
+            background-color: #F6FFED;
+            color: #52C41A;
+            border: 1px solid #B7EB8F;
+            padding: 2px 8px;
+            border-radius: 4px;
+            font-size: 12px;
+        }
+
+        .status-badge.warning {
+            background-color: #FFFBE6;
+            color: #FAAD14;
+            border: 1px solid #FFE58F;
+            padding: 2px 8px;
+            border-radius: 4px;
+            font-size: 12px;
+        }
+
         /* Scrollbar */
         .nav-menu::-webkit-scrollbar {
             width: 4px;
@@ -1586,7 +1892,6 @@
                                         <th>应收金额（元）</th>
                                         <th>已收金额（元）</th>
                                         <th>支付在途金额（元）</th>
-                                        <th>操作</th>
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -1596,7 +1901,6 @@
                                         <td>500,000.00</td>
                                         <td>300,000.00</td>
                                         <td>100,000.00</td>
-                                        <td><span class="action-link">查看详情</span></td>
                                     </tr>
                                     <tr>
                                         <td>武汉恒达钢铁有限公司</td>
@@ -1604,7 +1908,6 @@
                                         <td>1,200,000.00</td>
                                         <td>800,000.00</td>
                                         <td>200,000.00</td>
-                                        <td><span class="action-link">查看详情</span></td>
                                     </tr>
                                     <tr>
                                         <td>湖北昌达物流有限公司</td>
@@ -1612,7 +1915,6 @@
                                         <td>350,000.00</td>
                                         <td>150,000.00</td>
                                         <td>0.00</td>
-                                        <td><span class="action-link">查看详情</span></td>
                                     </tr>
                                 </tbody>
                             </table>
@@ -1641,7 +1943,7 @@
                                         <td>800,000.00</td>
                                         <td>600,000.00</td>
                                         <td>100,000.00</td>
-                                        <td><span class="action-link">查看详情</span></td>
+                                        <td><button class="btn btn-primary btn-sm" onclick="showPaymentPage()">付款</button></td>
                                     </tr>
                                     <tr>
                                         <td>武汉钢铁集团有限公司</td>
@@ -1649,7 +1951,7 @@
                                         <td>1,500,000.00</td>
                                         <td>900,000.00</td>
                                         <td>300,000.00</td>
-                                        <td><span class="action-link">查看详情</span></td>
+                                        <td><button class="btn btn-primary btn-sm" onclick="showPaymentPage()">付款</button></td>
                                     </tr>
                                     <tr>
                                         <td>湖北交投物流集团有限公司</td>
@@ -1657,7 +1959,7 @@
                                         <td>420,000.00</td>
                                         <td>200,000.00</td>
                                         <td>50,000.00</td>
-                                        <td><span class="action-link">查看详情</span></td>
+                                        <td><button class="btn btn-primary btn-sm" onclick="showPaymentPage()">付款</button></td>
                                     </tr>
                                 </tbody>
                             </table>
@@ -1667,6 +1969,128 @@
                     <!-- Page Footer -->
                     <div class="page-footer">
                         鄂ICP备2024059520号-1
+                    </div>
+                </div>
+
+                <!-- 付款 Page -->
+                <div class="page-content" id="paymentPage">
+                    <div class="form-page">
+                        <h2 class="form-title" style="margin-bottom: 24px;">付款</h2>
+
+                        <!-- 买方信息 -->
+                        <div class="form-section">
+                            <div class="form-section-header">买方信息</div>
+                            <div class="form-section-body">
+                                <div class="form-grid">
+                                    <div class="form-group">
+                                        <label>公司名称</label>
+                                        <input type="text" value="宜昌润砾鑫商贸有限公司" readonly style="background-color: #F5F5F5;">
+                                    </div>
+                                    <div class="form-group">
+                                        <label>统一社会信用代码</label>
+                                        <input type="text" value="91420500MA4F43331Y" readonly style="background-color: #F5F5F5;">
+                                    </div>
+                                    <div class="form-group">
+                                        <label>手机号码</label>
+                                        <input type="text" value="13308600989" readonly style="background-color: #F5F5F5;">
+                                    </div>
+                                    <div class="form-group">
+                                        <label>公司邮箱</label>
+                                        <input type="text" value="972246217@qq.com" readonly style="background-color: #F5F5F5;">
+                                    </div>
+                                    <div class="form-group">
+                                        <label>公司地址</label>
+                                        <input type="text" value="宜昌市伍家岗区沿江大道159-2号" readonly style="background-color: #F5F5F5;">
+                                    </div>
+                                    <div class="form-group">
+                                        <label>收货地址</label>
+                                        <input type="text" value="宜昌市伍家岗区沿江大道159-2号" readonly style="background-color: #F5F5F5;">
+                                    </div>
+                                    <div class="form-group">
+                                        <label>客户账号</label>
+                                        <input type="text" value="J01072900000751" readonly style="background-color: #F5F5F5;">
+                                    </div>
+                                    <div class="form-group">
+                                        <label>开户行名</label>
+                                        <input type="text" value="招商银行宜昌分行营业部" readonly style="background-color: #F5F5F5;">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- 已选订单 -->
+                        <div class="form-section">
+                            <div class="form-section-header">已选订单</div>
+                            <div class="form-section-body">
+                                <div class="table-wrapper">
+                                    <table>
+                                        <thead>
+                                            <tr>
+                                                <th>订单编号</th>
+                                                <th>收款账号</th>
+                                                <th>卖方名称</th>
+                                                <th>付款账号</th>
+                                                <th>交易金额(元)</th>
+                                                <th>应付金额(元)</th>
+                                                <th>已付金额(元)</th>
+                                                <th>交易时间</th>
+                                                <th>交易备注</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr>
+                                                <td>513555382807732226</td>
+                                                <td>J01072900028651</td>
+                                                <td>武汉华辰盛辉贸易有限公司</td>
+                                                <td>J01072900000751</td>
+                                                <td>2,005,403.40</td>
+                                                <td>2,005,403.40</td>
+                                                <td>0.00</td>
+                                                <td>2026-08-14 14:30:07</td>
+                                                <td></td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- 付款信息 -->
+                        <div class="form-section">
+                            <div class="form-section-header">付款信息</div>
+                            <div class="form-section-body">
+                                <div class="form-grid">
+                                    <div class="form-group">
+                                        <label><span class="required">*</span>交易付款金额</label>
+                                        <input type="text" placeholder="请输入交易付款金额">
+                                    </div>
+                                    <div class="form-group">
+                                        <label>账户余额</label>
+                                        <input type="text" value="18,381.40" readonly style="background-color: #F5F5F5;">
+                                    </div>
+                                    <div class="form-group">
+                                        <label>未结费用</label>
+                                        <input type="text" value="200.54" readonly style="background-color: #F5F5F5;">
+                                    </div>
+                                </div>
+                                <div class="form-grid-full" style="margin-top: 16px;">
+                                    <div class="form-group">
+                                        <label>摘要信息</label>
+                                        <input type="text" placeholder="请输入摘要信息">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Form Actions -->
+                        <div class="form-actions" style="text-align: center;">
+                            <button class="btn btn-primary">提交</button>
+                            <button class="btn btn-default">返回</button>
+                        </div>
+
+                        <div class="page-footer" style="padding-top: 40px;">
+                            鄂ICP备2024059520号-1
+                        </div>
                     </div>
                 </div>
 
@@ -1893,32 +2317,40 @@
                     <div class="query-page">
                         <!-- Search Filters -->
                         <div class="query-filters">
-                            <div class="filter-row">
+                            <div class="filter-grid">
                                 <div class="filter-item">
                                     <label>银行流水号</label>
-                                    <input type="text" placeholder="请输入">
+                                    <input type="text" placeholder="请输入银行流水号">
                                 </div>
                                 <div class="filter-item">
-                                    <label>开始时间</label>
-                                    <input type="date" value="2026-08-01">
+                                    <label>公司名</label>
+                                    <input type="text" placeholder="请输入公司名搜索">
                                 </div>
                                 <div class="filter-item">
-                                    <label>结束时间</label>
-                                    <input type="date" value="2026-08-31">
+                                    <label>对手方户名</label>
+                                    <input type="text" placeholder="请输入对手方户名">
                                 </div>
-                                <div class="filter-buttons">
-                                    <button class="btn btn-default">重置</button>
-                                    <button class="btn btn-primary">查询</button>
+                                <div class="filter-item" style="grid-column: 1 / span 2;">
+                                    <label>交易时间</label>
+                                    <div class="date-range-input">
+                                        <input type="date" value="2026-07-17">
+                                        <span>至</span>
+                                        <input type="date" value="2026-08-17">
+                                    </div>
+                                </div>
+                                <div class="filter-grid-full-row">
+                                    <button class="btn btn-primary"><i class="fas fa-search"></i> 搜索</button>
+                                    <button class="btn btn-default"><i class="fas fa-redo"></i> 重置</button>
                                 </div>
                             </div>
                         </div>
 
                         <!-- Action Buttons -->
                         <div class="action-bar">
-                            <button class="btn btn-primary"><i class="fas fa-file-pdf"></i> PDF明细下载</button>
-                            <button class="btn btn-primary"><i class="fas fa-file-excel"></i> EXCEL明细下载</button>
-                            <button class="btn btn-primary"><i class="fas fa-file-invoice"></i> 回单下载</button>
-                            <button class="btn btn-primary"><i class="fas fa-folder"></i> 下载中心</button>
+                            <button class="btn btn-pdf"><i class="fas fa-file-pdf"></i> PDF下载</button>
+                            <button class="btn btn-excel"><i class="fas fa-file-excel"></i> EXCEL导出</button>
+                            <button class="btn btn-excel"><i class="fas fa-file-invoice"></i> 回单批量下载</button>
+                            <button class="btn btn-outline"><i class="fas fa-folder"></i> 下载中心</button>
                         </div>
 
                         <!-- Table Section -->
@@ -1927,61 +2359,71 @@
                                 <table>
                                     <thead>
                                         <tr>
-                                            <th><input type="checkbox"></th>
                                             <th>银行流水号</th>
-                                            <th>对方户名</th>
-                                            <th>对方账号</th>
+                                            <th>公司名</th>
+                                            <th>对手方户名</th>
+                                            <th>对手方账号</th>
                                             <th>借贷标记</th>
+                                            <th>交易类型</th>
                                             <th>交易金额</th>
-                                            <th>交易前余额(元)</th>
-                                            <th>交易后(元)</th>
+                                            <th>交易前余额</th>
+                                            <th>交易后余额</th>
+                                            <th>交易时间</th>
                                             <th>操作</th>
                                         </tr>
                                     </thead>
                                     <tbody>
                                         <tr>
-                                            <td><input type="checkbox"></td>
-                                            <td>ZX20260807001</td>
-                                            <td>武汉钢铁集团有限公司</td>
-                                            <td>6228480402567890123</td>
-                                            <td>借</td>
-                                            <td>500,000.00</td>
-                                            <td>1,200,000.00</td>
-                                            <td>1,700,000.00</td>
-                                            <td><span class="action-link">查看</span></td>
+                                            <td>EMSSBPG2608035965819572595283974</td>
+                                            <td>宜昌润砾鑫商贸有限公司</td>
+                                            <td>湖北能化物流有限公司</td>
+                                            <td>J01072900024401</td>
+                                            <td>账户出金</td>
+                                            <td>转账</td>
+                                            <td>544.70</td>
+                                            <td>5,265,926.10</td>
+                                            <td>5,265,381.40</td>
+                                            <td>2026-08-03 14:03:21</td>
+                                            <td><span class="action-link">回单下载</span></td>
                                         </tr>
                                         <tr>
-                                            <td><input type="checkbox"></td>
-                                            <td>ZX20260806002</td>
-                                            <td>湖北交投物流集团有限公司</td>
-                                            <td>6228480402567890456</td>
-                                            <td>贷</td>
-                                            <td>300,000.00</td>
-                                            <td>1,700,000.00</td>
-                                            <td>1,400,000.00</td>
-                                            <td><span class="action-link">查看</span></td>
+                                            <td>EMSSBPG260803596581960954235904</td>
+                                            <td>宜昌润砾鑫商贸有限公司</td>
+                                            <td>湖北普源科技有限公司</td>
+                                            <td>J01072900000202</td>
+                                            <td>账户出金</td>
+                                            <td>转账</td>
+                                            <td>5,247,000.00</td>
+                                            <td>5,265,381.40</td>
+                                            <td>18,381.40</td>
+                                            <td>2026-08-03 14:03:22</td>
+                                            <td><span class="action-link">回单下载</span></td>
                                         </tr>
                                         <tr>
-                                            <td><input type="checkbox"></td>
-                                            <td>ZX20260805003</td>
-                                            <td>中信银行股份有限公司</td>
-                                            <td>6228480402567890789</td>
-                                            <td>借</td>
-                                            <td>800,000.00</td>
-                                            <td>1,400,000.00</td>
-                                            <td>2,200,000.00</td>
-                                            <td><span class="action-link">查看</span></td>
+                                            <td>EMSSBPG2608035965819022834493456</td>
+                                            <td>宜昌润砾鑫商贸有限公司</td>
+                                            <td>湖北有腾供应链管理有限公司</td>
+                                            <td>J01072900000602</td>
+                                            <td>账户出金</td>
+                                            <td>转账</td>
+                                            <td>9,573.90</td>
+                                            <td>5,275,500.00</td>
+                                            <td>5,265,926.10</td>
+                                            <td>2026-08-03 14:03:05</td>
+                                            <td><span class="action-link">回单下载</span></td>
                                         </tr>
                                         <tr>
-                                            <td><input type="checkbox"></td>
-                                            <td>ZX20260804004</td>
-                                            <td>宜昌恒昌建材有限公司</td>
-                                            <td>6228480402567890234</td>
-                                            <td>贷</td>
-                                            <td>150,000.00</td>
-                                            <td>2,200,000.00</td>
-                                            <td>2,050,000.00</td>
-                                            <td><span class="action-link">查看</span></td>
+                                            <td>2608032NA500140780200001020117C</td>
+                                            <td>宜昌润砾鑫商贸有限公司</td>
+                                            <td>宜昌润砾鑫商贸有限公司</td>
+                                            <td>J01072900000751</td>
+                                            <td>账户入金</td>
+                                            <td>入金</td>
+                                            <td>775,500.00</td>
+                                            <td>4,500,000.00</td>
+                                            <td>5,275,500.00</td>
+                                            <td>2026-08-03 14:01:59</td>
+                                            <td><span class="action-link">回单下载</span></td>
                                         </tr>
                                     </tbody>
                                 </table>
@@ -2256,8 +2698,46 @@
                 <!-- 交易列表 Page -->
                 <div class="page-content" id="trade-listPage">
                     <div class="query-page">
-                        <div class="batch-action-bar">
-                            <button class="btn btn-primary">查询</button>
+                        <!-- Search Filters -->
+                        <div class="query-filters">
+                            <div class="filter-grid">
+                                <div class="filter-item">
+                                    <label>订单编号</label>
+                                    <input type="text" placeholder="请输入订单编号">
+                                </div>
+                                <div class="filter-item">
+                                    <label>提货单号</label>
+                                    <input type="text" placeholder="请输入提货单号">
+                                </div>
+                                <div class="filter-item">
+                                    <label>卖方名称</label>
+                                    <input type="text" placeholder="请输入客户名称">
+                                </div>
+                                <div class="filter-item">
+                                    <label>买方名称</label>
+                                    <input type="text" placeholder="请输入买方名称">
+                                </div>
+                                <div class="filter-item">
+                                    <label>转让时间</label>
+                                    <input type="date" placeholder="请选择转让时间">
+                                </div>
+                                <div class="filter-item">
+                                    <label>签收时间</label>
+                                    <input type="date" placeholder="请选择签收时间">
+                                </div>
+                                <div class="filter-item">
+                                    <label>付款方式</label>
+                                    <select>
+                                        <option value="">请选择付款方式</option>
+                                        <option value="immediate">立即付款</option>
+                                        <option value="deferred">延时付款</option>
+                                    </select>
+                                </div>
+                                <div class="filter-grid-full-row">
+                                    <button class="btn btn-primary"><i class="fas fa-search"></i> 搜索</button>
+                                    <button class="btn btn-default"><i class="fas fa-redo"></i> 重置</button>
+                                </div>
+                            </div>
                         </div>
 
                         <!-- Table Section -->
@@ -2266,42 +2746,101 @@
                                 <table>
                                     <thead>
                                         <tr>
-                                            <th>#</th>
+                                            <th><input type="checkbox"></th>
                                             <th>订单编号</th>
-                                            <th>买方姓名</th>
-                                            <th>卖方姓名</th>
+                                            <th>卖方名称</th>
+                                            <th>买方名称</th>
                                             <th>付款方式</th>
-                                            <th>交易金额（元）</th>
+                                            <th>交易金额(元)</th>
+                                            <th>转让时间</th>
+                                            <th>签收时间</th>
                                             <th>操作</th>
                                         </tr>
                                     </thead>
                                     <tbody>
                                         <tr>
-                                            <td>1</td>
-                                            <td>ORD20260807001</td>
+                                            <td><input type="checkbox"></td>
+                                            <td><a href="#" class="action-link">513555382832898049</a></td>
+                                            <td>武汉华辰盛辉贸易有限公司</td>
                                             <td>宜昌润砾鑫商贸有限公司</td>
-                                            <td>武汉钢铁集团有限公司</td>
-                                            <td>银行转账</td>
-                                            <td>500,000.00</td>
-                                            <td><span class="action-link">查看</span></td>
+                                            <td>延时付款</td>
+                                            <td>2,005.40</td>
+                                            <td>2026-08-14</td>
+                                            <td>2026-08-14</td>
+                                            <td>
+                                                <div class="action-link-group">
+                                                    <span class="action-link" onclick="showDocUploadModal()"><i class="fas fa-upload"></i> 资料上传</span>
+                                                    <span class="action-divider">/</span>
+                                                    <span class="action-link" onclick="showDocViewModal()"><i class="fas fa-file-alt"></i> 资料查看</span>
+                                                    <span class="action-divider">/</span>
+                                                    <span class="action-link"><i class="fas fa-times"></i> 取消订单</span>
+                                                    <span class="action-divider">/</span>
+                                                    <span class="action-link"><i class="fas fa-edit"></i> 修改金额</span>
+                                                </div>
+                                            </td>
                                         </tr>
                                         <tr>
-                                            <td>2</td>
-                                            <td>ORD20260806002</td>
+                                            <td><input type="checkbox"></td>
+                                            <td><a href="#" class="action-link">505227964594421761</a></td>
+                                            <td>湖北誉源科技有限公司</td>
                                             <td>宜昌润砾鑫商贸有限公司</td>
-                                            <td>湖北交投物流集团有限公司</td>
-                                            <td>银行转账</td>
-                                            <td>300,000.00</td>
-                                            <td><span class="action-link">查看</span></td>
+                                            <td>延时付款</td>
+                                            <td>5,247.00</td>
+                                            <td>2026-07-22</td>
+                                            <td>2026-07-22</td>
+                                            <td>
+                                                <div class="action-link-group">
+                                                    <span class="action-link" onclick="showDocUploadModal()"><i class="fas fa-upload"></i> 资料上传</span>
+                                                    <span class="action-divider">/</span>
+                                                    <span class="action-link" onclick="showDocViewModal()"><i class="fas fa-file-alt"></i> 资料查看</span>
+                                                    <span class="action-divider">/</span>
+                                                    <span class="action-link"><i class="fas fa-times"></i> 取消订单</span>
+                                                    <span class="action-divider">/</span>
+                                                    <span class="action-link"><i class="fas fa-edit"></i> 修改金额</span>
+                                                </div>
+                                            </td>
                                         </tr>
                                         <tr>
-                                            <td>3</td>
-                                            <td>ORD20260805003</td>
+                                            <td><input type="checkbox"></td>
+                                            <td><a href="#" class="action-link">505226005438464025</a></td>
+                                            <td>湖北有腾供应链管理有限公司</td>
                                             <td>宜昌润砾鑫商贸有限公司</td>
-                                            <td>中信银行股份有限公司</td>
-                                            <td>电子承兑</td>
-                                            <td>800,000.00</td>
-                                            <td><span class="action-link">查看</span></td>
+                                            <td>延时付款</td>
+                                            <td>5,288.00</td>
+                                            <td>2026-07-22</td>
+                                            <td>2026-07-22</td>
+                                            <td>
+                                                <div class="action-link-group">
+                                                    <span class="action-link" onclick="showDocUploadModal()"><i class="fas fa-upload"></i> 资料上传</span>
+                                                    <span class="action-divider">/</span>
+                                                    <span class="action-link" onclick="showDocViewModal()"><i class="fas fa-file-alt"></i> 资料查看</span>
+                                                    <span class="action-divider">/</span>
+                                                    <span class="action-link"><i class="fas fa-times"></i> 取消订单</span>
+                                                    <span class="action-divider">/</span>
+                                                    <span class="action-link"><i class="fas fa-edit"></i> 修改金额</span>
+                                                </div>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td><input type="checkbox"></td>
+                                            <td><a href="#" class="action-link">504895849952608258</a></td>
+                                            <td>武汉奕真科技有限公司</td>
+                                            <td>宜昌润砾鑫商贸有限公司</td>
+                                            <td>延时付款</td>
+                                            <td>10,051,000.00</td>
+                                            <td>2026-07-21</td>
+                                            <td>2026-07-21</td>
+                                            <td>
+                                                <div class="action-link-group">
+                                                    <span class="action-link" onclick="showDocUploadModal()"><i class="fas fa-upload"></i> 资料上传</span>
+                                                    <span class="action-divider">/</span>
+                                                    <span class="action-link" onclick="showDocViewModal()"><i class="fas fa-file-alt"></i> 资料查看</span>
+                                                    <span class="action-divider">/</span>
+                                                    <span class="action-link"><i class="fas fa-times"></i> 取消订单</span>
+                                                    <span class="action-divider">/</span>
+                                                    <span class="action-link"><i class="fas fa-edit"></i> 修改金额</span>
+                                                </div>
+                                            </td>
                                         </tr>
                                     </tbody>
                                 </table>
@@ -2315,12 +2854,255 @@
                     </div>
                 </div>
 
+                <!-- 资料上传 Modal (图4) -->
+                <div class="modal-overlay" id="docUploadModal">
+                    <div class="modal-dialog modal-lg">
+                        <div class="modal-header">
+                            <span class="modal-title">资料上传</span>
+                            <button class="modal-close" onclick="closeModal('docUploadModal')"><i class="fas fa-times"></i></button>
+                        </div>
+                        <div class="modal-body">
+                            <div class="form-section">
+                                <div class="form-section-header" style="color: #1890FF;">合同资料</div>
+                                <div class="form-section-body">
+                                    <table class="doc-upload-table">
+                                        <thead>
+                                            <tr>
+                                                <th>文档类型</th>
+                                                <th>文件名称</th>
+                                                <th>操作</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr>
+                                                <td>发票</td>
+                                                <td>
+                                                    <div class="doc-file-item">
+                                                        <i class="fas fa-file-alt"></i>
+                                                        <span>dzfp_26422000002673142681_宜昌润砾鑫商贸有限公司_20260724153310</span>
+                                                        <i class="fas fa-download download-icon"></i>
+                                                        <i class="fas fa-trash-alt delete-icon"></i>
+                                                    </div>
+                                                    <div class="doc-file-item">
+                                                        <i class="fas fa-file-alt"></i>
+                                                        <span>dzfp_26422000002673558046_宜昌润砾鑫商贸有限公司_20260724153427</span>
+                                                        <i class="fas fa-download download-icon"></i>
+                                                        <i class="fas fa-trash-alt delete-icon"></i>
+                                                    </div>
+                                                </td>
+                                                <td><span class="upload-link"><i class="fas fa-cloud-upload-alt"></i> 上传</span></td>
+                                            </tr>
+                                            <tr>
+                                                <td>合同</td>
+                                                <td>
+                                                    <div class="doc-file-item">
+                                                        <i class="fas fa-file-alt"></i>
+                                                        <span>24.华辰-润砾鑫</span>
+                                                        <i class="fas fa-download download-icon"></i>
+                                                        <i class="fas fa-trash-alt delete-icon"></i>
+                                                    </div>
+                                                </td>
+                                                <td><span class="upload-link"><i class="fas fa-cloud-upload-alt"></i> 上传</span></td>
+                                            </tr>
+                                            <tr>
+                                                <td>其他</td>
+                                                <td></td>
+                                                <td><span class="upload-link"><i class="fas fa-cloud-upload-alt"></i> 上传</span></td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="modal-footer">
+                            <button class="btn btn-primary">提交</button>
+                            <button class="btn btn-default" onclick="closeModal('docUploadModal')">返回</button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 资料查看 Modal (图5+图6) -->
+                <div class="modal-overlay" id="docViewModal">
+                    <div class="modal-dialog modal-lg">
+                        <div class="modal-header">
+                            <span class="modal-title">资料查看</span>
+                            <button class="modal-close" onclick="closeModal('docViewModal')"><i class="fas fa-times"></i></button>
+                        </div>
+                        <div class="modal-body">
+                            <!-- 卖方信息 -->
+                            <div class="form-section">
+                                <div class="form-section-header">卖方信息</div>
+                                <div class="form-section-body">
+                                    <div class="form-grid">
+                                        <div class="form-group">
+                                            <label>公司名称</label>
+                                            <input type="text" value="武汉华辰盛辉贸易有限公司" readonly style="background-color: #F5F5F5;">
+                                        </div>
+                                        <div class="form-group">
+                                            <label>统一社会信用代码</label>
+                                            <input type="text" value="91420102669526995L" readonly style="background-color: #F5F5F5;">
+                                        </div>
+                                        <div class="form-group">
+                                            <label>手机号码</label>
+                                            <input type="text" value="13018018686" readonly style="background-color: #F5F5F5;">
+                                        </div>
+                                        <div class="form-group">
+                                            <label>公司邮箱</label>
+                                            <input type="text" value="564112353@qq.com" readonly style="background-color: #F5F5F5;">
+                                        </div>
+                                        <div class="form-group">
+                                            <label>公司地址</label>
+                                            <input type="text" value="湖北省武汉市江岸区劳动街道黄浦国际中心2501-2" readonly style="background-color: #F5F5F5;">
+                                        </div>
+                                        <div class="form-group">
+                                            <label>收货地址</label>
+                                            <input type="text" value="湖北省武汉市江岸区劳动街道黄浦国际中心2501-2" readonly style="background-color: #F5F5F5;">
+                                        </div>
+                                        <div class="form-group">
+                                            <label>银行基本户号</label>
+                                            <input type="text" value="J01072900028651" readonly style="background-color: #F5F5F5;">
+                                        </div>
+                                        <div class="form-group">
+                                            <label>开户行名</label>
+                                            <input type="text" value="中国建设银行股份有限公司武汉硚口支行" readonly style="background-color: #F5F5F5;">
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- 买方信息 -->
+                            <div class="form-section">
+                                <div class="form-section-header">买方信息</div>
+                                <div class="form-section-body">
+                                    <div class="form-grid">
+                                        <div class="form-group">
+                                            <label>公司名称</label>
+                                            <input type="text" value="宜昌润砾鑫商贸有限公司" readonly style="background-color: #F5F5F5;">
+                                        </div>
+                                        <div class="form-group">
+                                            <label>统一社会信用代码</label>
+                                            <input type="text" value="91420500MA4F43331Y" readonly style="background-color: #F5F5F5;">
+                                        </div>
+                                        <div class="form-group">
+                                            <label>手机号码</label>
+                                            <input type="text" value="" readonly style="background-color: #F5F5F5;">
+                                        </div>
+                                        <div class="form-group">
+                                            <label>公司邮箱</label>
+                                            <input type="text" value="972246217@qq.com" readonly style="background-color: #F5F5F5;">
+                                        </div>
+                                        <div class="form-group">
+                                            <label>公司地址</label>
+                                            <input type="text" value="宜昌市伍家岗区沿江大道159-2号" readonly style="background-color: #F5F5F5;">
+                                        </div>
+                                        <div class="form-group">
+                                            <label>收货地址</label>
+                                            <input type="text" value="宜昌市伍家岗区沿江大道159-2号" readonly style="background-color: #F5F5F5;">
+                                        </div>
+                                        <div class="form-group">
+                                            <label>银行基本户号</label>
+                                            <input type="text" value="J01072900000751" readonly style="background-color: #F5F5F5;">
+                                        </div>
+                                        <div class="form-group">
+                                            <label>开户行名</label>
+                                            <input type="text" value="招商银行宜昌分行营业部" readonly style="background-color: #F5F5F5;">
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- 提货单信息 -->
+                            <div class="form-section">
+                                <div class="form-section-header">提货单信息</div>
+                                <div class="form-section-body">
+                                    <div class="table-wrapper">
+                                        <table>
+                                            <thead>
+                                                <tr>
+                                                    <th>提货单号</th>
+                                                    <th>提货单标题</th>
+                                                    <th>提货单状态</th>
+                                                    <th>提货方式</th>
+                                                    <th>提货仓</th>
+                                                    <th>提交人</th>
+                                                    <th>签收时间</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                <tr>
+                                                    <td><a href="#" class="action-link">512772506327613442</a></td>
+                                                    <td>7月碎米-780吨</td>
+                                                    <td>已签收</td>
+                                                    <td>自提</td>
+                                                    <td>能化物流</td>
+                                                    <td>宜昌润砾鑫商贸有限公司</td>
+                                                    <td>2026-08-14</td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- 合同资料 -->
+                            <div class="form-section">
+                                <div class="form-section-header" style="color: #1890FF;">合同资料</div>
+                                <div class="form-section-body">
+                                    <table class="doc-upload-table">
+                                        <thead>
+                                            <tr>
+                                                <th>文档类型</th>
+                                                <th>文件名称</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr>
+                                                <td>发票</td>
+                                                <td>
+                                                    <div class="doc-file-item">
+                                                        <i class="fas fa-file-alt"></i>
+                                                        <span>dzfp_26422000002673142681_宜昌润砾鑫商贸有限公司_20260724153310</span>
+                                                        <i class="fas fa-download download-icon"></i>
+                                                    </div>
+                                                    <div class="doc-file-item">
+                                                        <i class="fas fa-file-alt"></i>
+                                                        <span>dzfp_26422000002673558046_宜昌润砾鑫商贸有限公司_20260724153427</span>
+                                                        <i class="fas fa-download download-icon"></i>
+                                                    </div>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td>合同</td>
+                                                <td>
+                                                    <div class="doc-file-item">
+                                                        <i class="fas fa-file-alt"></i>
+                                                        <span>24.华辰-润砾鑫</span>
+                                                        <i class="fas fa-download download-icon"></i>
+                                                    </div>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td>其他</td>
+                                                <td></td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="modal-footer">
+                            <button class="btn btn-default" onclick="closeModal('docViewModal')">返回</button>
+                        </div>
+                    </div>
+                </div>
+
                 <!-- 货权转让 Page -->
                 <div class="page-content" id="cargo-transferPage">
                     <div class="query-page">
-                        <div class="batch-action-bar">
-                            <button class="btn btn-primary">批量转让</button>
-                            <button class="btn btn-primary">查询</button>
+                        <!-- Action Bar -->
+                        <div class="action-bar">
+                            <button class="btn btn-primary"><i class="fas fa-search"></i> 搜索</button>
+                            <button class="btn btn-outline"><i class="fas fa-plus"></i> 批量转让</button>
                         </div>
 
                         <!-- Table Section -->
@@ -2330,61 +3112,83 @@
                                     <thead>
                                         <tr>
                                             <th><input type="checkbox"></th>
-                                            <th>批次号</th>
-                                            <th>批次标题</th>
+                                            <th>提货单号</th>
+                                            <th>提货单标题</th>
                                             <th>提货单状态</th>
                                             <th>提货方式</th>
                                             <th>提货仓</th>
+                                            <th>提货单持有人</th>
                                             <th>签收时间</th>
-                                            <th>是否持有</th>
+                                            <th>创建日期</th>
+                                            <th>是否已提货</th>
                                             <th>操作</th>
                                         </tr>
                                     </thead>
                                     <tbody>
                                         <tr>
                                             <td><input type="checkbox"></td>
-                                            <td>BATCH20260807001</td>
-                                            <td>钢材批次-润砾鑫</td>
-                                            <td><span class="status-badge success">已签收</span></td>
+                                            <td>512772506327613442</td>
+                                            <td>7月碎米-780吨</td>
+                                            <td>已签收</td>
                                             <td>自提</td>
-                                            <td>武汉恒达仓库</td>
-                                            <td>2026-08-07 10:30</td>
-                                            <td>是</td>
-                                            <td>
-                                                <span class="action-link">转让</span>
-                                                <span class="action-divider">|</span>
-                                                <span class="action-link">查看</span>
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td><input type="checkbox"></td>
-                                            <td>BATCH20260806002</td>
-                                            <td>水泥批次-恒昌</td>
-                                            <td><span class="status-badge warning">待签收</span></td>
-                                            <td>配送</td>
-                                            <td>宜昌昌达仓库</td>
-                                            <td>-</td>
+                                            <td>能化物流</td>
+                                            <td>宜昌润砾鑫商贸有限公司</td>
+                                            <td>2026-08-14</td>
+                                            <td>2026-07-01</td>
                                             <td>否</td>
-                                            <td>
-                                                <span class="action-link">转让</span>
-                                                <span class="action-divider">|</span>
-                                                <span class="action-link">查看</span>
-                                            </td>
+                                            <td><span class="action-link" onclick="showTransferModal()"><i class="fas fa-edit"></i> 转让</span></td>
                                         </tr>
                                         <tr>
                                             <td><input type="checkbox"></td>
-                                            <td>BATCH20260805003</td>
-                                            <td>建材批次-交投</td>
-                                            <td><span class="status-badge success">已签收</span></td>
+                                            <td>504857417209511937</td>
+                                            <td>7月笔记本电脑-10台</td>
+                                            <td>已签收</td>
                                             <td>自提</td>
-                                            <td>湖北交投仓库</td>
-                                            <td>2026-08-05 14:20</td>
-                                            <td>是</td>
-                                            <td>
-                                                <span class="action-link">转让</span>
-                                                <span class="action-divider">|</span>
-                                                <span class="action-link">查看</span>
-                                            </td>
+                                            <td>能化笔记本仓</td>
+                                            <td>宜昌润砾鑫商贸有限公司</td>
+                                            <td>2026-07-22</td>
+                                            <td>2026-07-01</td>
+                                            <td>否</td>
+                                            <td><span class="action-link" onclick="showTransferModal()"><i class="fas fa-edit"></i> 转让</span></td>
+                                        </tr>
+                                        <tr>
+                                            <td><input type="checkbox"></td>
+                                            <td>504858923673485313</td>
+                                            <td>7月笔记本电脑-135台</td>
+                                            <td>已签收</td>
+                                            <td>自提</td>
+                                            <td>能化笔记本仓</td>
+                                            <td>宜昌润砾鑫商贸有限公司</td>
+                                            <td>2026-07-22</td>
+                                            <td>2026-07-01</td>
+                                            <td>否</td>
+                                            <td><span class="action-link" onclick="showTransferModal()"><i class="fas fa-edit"></i> 转让</span></td>
+                                        </tr>
+                                        <tr>
+                                            <td><input type="checkbox"></td>
+                                            <td>504859166179753985</td>
+                                            <td>7月笔记本电脑-400台</td>
+                                            <td>已签收</td>
+                                            <td>自提</td>
+                                            <td>能化笔记本仓</td>
+                                            <td>宜昌润砾鑫商贸有限公司</td>
+                                            <td>2026-07-22</td>
+                                            <td>2026-07-01</td>
+                                            <td>否</td>
+                                            <td><span class="action-link" onclick="showTransferModal()"><i class="fas fa-edit"></i> 转让</span></td>
+                                        </tr>
+                                        <tr>
+                                            <td><input type="checkbox"></td>
+                                            <td>504859328476921247</td>
+                                            <td>7月笔记本电脑-63台</td>
+                                            <td>已签收</td>
+                                            <td>自提</td>
+                                            <td>能化笔记本仓</td>
+                                            <td>宜昌润砾鑫商贸有限公司</td>
+                                            <td>2026-07-22</td>
+                                            <td>2026-07-01</td>
+                                            <td>否</td>
+                                            <td><span class="action-link" onclick="showTransferModal()"><i class="fas fa-edit"></i> 转让</span></td>
                                         </tr>
                                     </tbody>
                                 </table>
@@ -2394,6 +3198,121 @@
                         <!-- Page Footer -->
                         <div class="page-footer">
                             鄂ICP备2024059520号-1
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 货权转让 Modal (图8+图9) -->
+                <div class="modal-overlay" id="transferModal">
+                    <div class="modal-dialog modal-lg">
+                        <div class="modal-header">
+                            <span class="modal-title">货权转让</span>
+                            <button class="modal-close" onclick="closeModal('transferModal')"><i class="fas fa-times"></i></button>
+                        </div>
+                        <div class="modal-body">
+                            <!-- 已选择提货单 (图9) -->
+                            <div class="form-section">
+                                <div class="form-section-header">已选择提货单</div>
+                                <div class="form-section-body">
+                                    <div class="table-wrapper">
+                                        <table>
+                                            <thead>
+                                                <tr>
+                                                    <th>提货单号</th>
+                                                    <th>提货单标题</th>
+                                                    <th>提货单状态</th>
+                                                    <th>提货方式</th>
+                                                    <th>提货仓</th>
+                                                    <th>提交人</th>
+                                                    <th>签收时间</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                <tr>
+                                                    <td><a href="#" class="action-link">512772506327613442</a></td>
+                                                    <td>7月碎米-780吨</td>
+                                                    <td>已签收</td>
+                                                    <td>自提</td>
+                                                    <td>能化物流</td>
+                                                    <td>宜昌润砾鑫商贸有限公司</td>
+                                                    <td>2026-08-14</td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- 转让信息 (图8+图9) -->
+                            <div class="form-section">
+                                <div class="form-section-header">转让信息</div>
+                                <div class="form-section-body">
+                                    <div class="form-grid">
+                                        <div class="form-group">
+                                            <label><span class="required">*</span>买方姓名</label>
+                                            <input type="text" placeholder="请输入买方姓名搜索">
+                                        </div>
+                                        <div class="form-group">
+                                            <label><span class="required">*</span>买方账号</label>
+                                            <input type="text" placeholder="请输入买方账号">
+                                        </div>
+                                        <div class="form-group">
+                                            <label><span class="required">*</span>转让总金额</label>
+                                            <input type="text" placeholder="请输入转让总金额">
+                                        </div>
+                                        <div class="form-group">
+                                            <label><span class="required">*</span>付款方式</label>
+                                            <div class="radio-group">
+                                                <label class="radio-item"><input type="radio" name="paymentMethod" value="immediate"> 立即付款</label>
+                                                <label class="radio-item"><input type="radio" name="paymentMethod" value="deferred"> 延时付款</label>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="form-grid-full" style="margin-top: 16px;">
+                                        <div class="form-group">
+                                            <label>交易备注</label>
+                                            <textarea rows="3" placeholder="请输入交易备注" style="padding: 8px 12px; border: 1px solid #D9D9D9; border-radius: 4px; font-size: 14px; resize: vertical;"></textarea>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- 合同资料 (图8) -->
+                            <div class="form-section">
+                                <div class="form-section-header" style="color: #1890FF;">合同资料</div>
+                                <div class="form-section-body">
+                                    <table class="doc-upload-table">
+                                        <thead>
+                                            <tr>
+                                                <th>文档类型</th>
+                                                <th>文件名称</th>
+                                                <th>操作</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr>
+                                                <td>发票</td>
+                                                <td></td>
+                                                <td><span class="upload-link"><i class="fas fa-cloud-upload-alt"></i> 上传</span></td>
+                                            </tr>
+                                            <tr>
+                                                <td>合同</td>
+                                                <td></td>
+                                                <td><span class="upload-link"><i class="fas fa-cloud-upload-alt"></i> 上传</span></td>
+                                            </tr>
+                                            <tr>
+                                                <td>其他</td>
+                                                <td></td>
+                                                <td><span class="upload-link"><i class="fas fa-cloud-upload-alt"></i> 上传</span></td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="modal-footer">
+                            <button class="btn btn-primary">提交</button>
+                            <button class="btn btn-default" onclick="closeModal('transferModal')">返回</button>
                         </div>
                     </div>
                 </div>
@@ -2614,6 +3533,308 @@
                     </div>
                 </div>
 
+                <!-- 货权查询 Page (图10) -->
+                <div class="page-content" id="cargo-queryPage">
+                    <div class="query-page">
+                        <!-- Search Filters -->
+                        <div class="query-filters">
+                            <div class="filter-grid">
+                                <div class="filter-item">
+                                    <label>提货单号</label>
+                                    <input type="text" placeholder="请输入提货单号">
+                                </div>
+                                <div class="filter-item">
+                                    <label>提货单标题</label>
+                                    <input type="text" placeholder="请输入提货单标题">
+                                </div>
+                                <div class="filter-item">
+                                    <label>提货方式</label>
+                                    <select>
+                                        <option value="">请选择提货方式</option>
+                                        <option value="self">自提</option>
+                                        <option value="delivery">配送</option>
+                                    </select>
+                                </div>
+                                <div class="filter-item">
+                                    <label>提货仓</label>
+                                    <input type="text" placeholder="请输入提货仓">
+                                </div>
+                                <div class="filter-item">
+                                    <label>签收日期</label>
+                                    <div class="date-range-input">
+                                        <input type="date" placeholder="开始日期">
+                                        <span>至</span>
+                                        <input type="date" placeholder="结束日期">
+                                    </div>
+                                </div>
+                                <div class="filter-item">
+                                    <label>是否已提货</label>
+                                    <select>
+                                        <option value="">请选择是否已提货</option>
+                                        <option value="yes">是</option>
+                                        <option value="no">否</option>
+                                    </select>
+                                </div>
+                                <div class="filter-item">
+                                    <label>提货单状态</label>
+                                    <select>
+                                        <option value="">请选择提货单状态</option>
+                                        <option value="signed">已签收</option>
+                                        <option value="pending">待签收</option>
+                                    </select>
+                                </div>
+                                <div class="filter-grid-full-row">
+                                    <button class="btn btn-primary"><i class="fas fa-search"></i> 搜索</button>
+                                    <button class="btn btn-default"><i class="fas fa-redo"></i> 重置</button>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Action Buttons -->
+                        <div class="action-bar">
+                            <button class="btn btn-primary"><i class="fas fa-plus"></i> 新增</button>
+                            <button class="btn btn-outline"><i class="fas fa-edit"></i> 提货</button>
+                        </div>
+
+                        <!-- Table Section -->
+                        <div class="table-section">
+                            <div class="table-wrapper">
+                                <table>
+                                    <thead>
+                                        <tr>
+                                            <th><input type="checkbox"></th>
+                                            <th>提货单号</th>
+                                            <th>提货单标题</th>
+                                            <th>提货单状态</th>
+                                            <th>提货方式</th>
+                                            <th>提货仓</th>
+                                            <th>提货单持有人</th>
+                                            <th>签收时间</th>
+                                            <th>创建日期</th>
+                                            <th>是否已提货</th>
+                                            <th>操作</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <td><input type="checkbox"></td>
+                                            <td>512772506327613442</td>
+                                            <td>7月碎米-780吨</td>
+                                            <td>已签收</td>
+                                            <td>自提</td>
+                                            <td>能化物流</td>
+                                            <td>宜昌润砾鑫商贸有限公司</td>
+                                            <td>2026-08-14</td>
+                                            <td>2026-07-01</td>
+                                            <td>否</td>
+                                            <td>
+                                                <div class="action-link-group">
+                                                    <span class="action-link" onclick="showCargoDetailModal()">明细</span>
+                                                    <span class="action-divider">/</span>
+                                                    <span class="action-link" onclick="showCargoHistoryModal()">流转历史</span>
+                                                </div>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td><input type="checkbox"></td>
+                                            <td>504857417209511937</td>
+                                            <td>7月笔记本电脑-10台</td>
+                                            <td>已签收</td>
+                                            <td>自提</td>
+                                            <td>能化笔记本仓</td>
+                                            <td>宜昌润砾鑫商贸有限公司</td>
+                                            <td>2026-07-22</td>
+                                            <td>2026-07-01</td>
+                                            <td>否</td>
+                                            <td>
+                                                <div class="action-link-group">
+                                                    <span class="action-link" onclick="showCargoDetailModal()">明细</span>
+                                                    <span class="action-divider">/</span>
+                                                    <span class="action-link" onclick="showCargoHistoryModal()">流转历史</span>
+                                                </div>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td><input type="checkbox"></td>
+                                            <td>504858923673485313</td>
+                                            <td>7月笔记本电脑-135台</td>
+                                            <td>已签收</td>
+                                            <td>自提</td>
+                                            <td>能化笔记本仓</td>
+                                            <td>宜昌润砾鑫商贸有限公司</td>
+                                            <td>2026-07-22</td>
+                                            <td>2026-07-01</td>
+                                            <td>否</td>
+                                            <td>
+                                                <div class="action-link-group">
+                                                    <span class="action-link" onclick="showCargoDetailModal()">明细</span>
+                                                    <span class="action-divider">/</span>
+                                                    <span class="action-link" onclick="showCargoHistoryModal()">流转历史</span>
+                                                </div>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td><input type="checkbox"></td>
+                                            <td>504859166179753985</td>
+                                            <td>7月笔记本电脑-400台</td>
+                                            <td>已签收</td>
+                                            <td>自提</td>
+                                            <td>能化笔记本仓</td>
+                                            <td>宜昌润砾鑫商贸有限公司</td>
+                                            <td>2026-07-22</td>
+                                            <td>2026-07-01</td>
+                                            <td>否</td>
+                                            <td>
+                                                <div class="action-link-group">
+                                                    <span class="action-link" onclick="showCargoDetailModal()">明细</span>
+                                                    <span class="action-divider">/</span>
+                                                    <span class="action-link" onclick="showCargoHistoryModal()">流转历史</span>
+                                                </div>
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+
+                        <!-- Page Footer -->
+                        <div class="page-footer">
+                            鄂ICP备2024059520号-1
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 货权查询-明细 Modal (图11) -->
+                <div class="modal-overlay" id="cargoDetailModal">
+                    <div class="modal-dialog modal-lg">
+                        <div class="modal-header">
+                            <span class="modal-title">明细</span>
+                            <button class="modal-close" onclick="closeModal('cargoDetailModal')"><i class="fas fa-times"></i></button>
+                        </div>
+                        <div class="modal-body">
+                            <!-- 基本信息 -->
+                            <div class="form-section">
+                                <div class="form-section-header">基本信息</div>
+                                <div class="form-section-body">
+                                    <div class="form-grid">
+                                        <div class="form-group">
+                                            <label><span class="required">*</span>提货单标题</label>
+                                            <input type="text" value="7月碎米-780吨">
+                                        </div>
+                                        <div class="form-group">
+                                            <label><span class="required">*</span>提货方式</label>
+                                            <select>
+                                                <option value="self" selected>自提</option>
+                                                <option value="delivery">配送</option>
+                                            </select>
+                                        </div>
+                                        <div class="form-group">
+                                            <label><span class="required">*</span>提货仓</label>
+                                            <input type="text" value="能化物流">
+                                        </div>
+                                        <div class="form-group">
+                                            <label><span class="required">*</span>创建日期</label>
+                                            <input type="date" value="2026-07-01">
+                                        </div>
+                                        <div class="form-group">
+                                            <label><span class="required">*</span>截止日期</label>
+                                            <input type="date" value="2026-08-31">
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- 货物信息列表 -->
+                            <div class="form-section">
+                                <div class="form-section-header">货物信息列表</div>
+                                <div class="form-section-body">
+                                    <div style="margin-bottom: 12px;">
+                                        <button class="btn btn-outline btn-sm"><i class="fas fa-plus"></i> 新增</button>
+                                    </div>
+                                    <div class="table-wrapper">
+                                        <table>
+                                            <thead>
+                                                <tr>
+                                                    <th>序号</th>
+                                                    <th>货物名称</th>
+                                                    <th>类型规格</th>
+                                                    <th>单位</th>
+                                                    <th>数量</th>
+                                                    <th>税收编码</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                <tr>
+                                                    <td>1</td>
+                                                    <td>谷物加工品*碎米</td>
+                                                    <td>—</td>
+                                                    <td>吨</td>
+                                                    <td>780</td>
+                                                    <td>103010203000000000</td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="modal-footer">
+                            <button class="btn btn-default" onclick="closeModal('cargoDetailModal')">返回</button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 货权查询-流转历史 Modal (图12) -->
+                <div class="modal-overlay" id="cargoHistoryModal">
+                    <div class="modal-dialog modal-lg">
+                        <div class="modal-header">
+                            <span class="modal-title">流转历史</span>
+                            <button class="modal-close" onclick="closeModal('cargoHistoryModal')"><i class="fas fa-times"></i></button>
+                        </div>
+                        <div class="modal-body">
+                            <!-- Tab Nav -->
+                            <div class="modal-tab-nav">
+                                <div class="modal-tab-item active">交易订单列表</div>
+                            </div>
+
+                            <!-- Transaction Order List Table -->
+                            <div class="table-wrapper">
+                                <table>
+                                    <thead>
+                                        <tr>
+                                            <th>序号</th>
+                                            <th>订单编号</th>
+                                            <th>提货单号</th>
+                                            <th>转让人</th>
+                                            <th>签收人</th>
+                                            <th>转让时间</th>
+                                            <th>签收时间</th>
+                                            <th>交易状态</th>
+                                            <th>备注</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <td>1</td>
+                                            <td>513555382832898049</td>
+                                            <td>512772506327613442</td>
+                                            <td>武汉华辰盛辉贸易有限公司</td>
+                                            <td>宜昌润砾鑫商贸有限公司</td>
+                                            <td>2026-08-14</td>
+                                            <td>2026-08-14</td>
+                                            <td>交易完成</td>
+                                            <td></td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                        <div class="modal-footer">
+                            <button class="btn btn-default" onclick="closeModal('cargoHistoryModal')">关闭</button>
+                        </div>
+                    </div>
+                </div>
+
                 <!-- 库存查询 Page -->
                 <div class="page-content" id="inventoryPage">
                     <div class="query-page">
@@ -2713,6 +3934,15 @@
                                 <div class="profile-info-content">
                                     <div class="profile-info-label">收货地址</div>
                                     <div class="profile-info-value">宜昌市伍家岗区沿江大道159-2号</div>
+                                </div>
+                            </div>
+                            <div class="profile-info-item">
+                                <div class="profile-info-icon">
+                                    <i class="fas fa-clock"></i>
+                                </div>
+                                <div class="profile-info-content">
+                                    <div class="profile-info-label">中信账号</div>
+                                    <div class="profile-info-value">J01072900000751</div>
                                 </div>
                             </div>
                             <div class="profile-info-item">
@@ -2973,6 +4203,66 @@
             if (arrow) {
                 arrow.classList.toggle('rotate');
             }
+        }
+
+        // Modal functions
+        function showModal(modalId) {
+            document.getElementById(modalId).classList.add('active');
+        }
+
+        function closeModal(modalId) {
+            document.getElementById(modalId).classList.remove('active');
+        }
+
+        function showDocUploadModal() { showModal('docUploadModal'); }
+        function showDocViewModal() { showModal('docViewModal'); }
+        function showTransferModal() { showModal('transferModal'); }
+        function showCargoDetailModal() { showModal('cargoDetailModal'); }
+        function showCargoHistoryModal() { showModal('cargoHistoryModal'); }
+
+        // Close modal when clicking outside the dialog
+        document.querySelectorAll('.modal-overlay').forEach(overlay => {
+            overlay.addEventListener('click', function(e) {
+                if (e.target === this) {
+                    this.classList.remove('active');
+                }
+            });
+        });
+
+        // Show payment page as new tab
+        function showPaymentPage() {
+            const tabsContainer = document.querySelector('.breadcrumb-tabs');
+            document.getElementById('homeContent').classList.remove('active');
+            document.querySelectorAll('.page-content').forEach(p => p.classList.remove('active'));
+
+            let existingTab = tabsContainer.querySelector('.tab[data-page="payment"]');
+            if (existingTab) {
+                tabsContainer.querySelectorAll('.tab').forEach(t => t.classList.remove('active'));
+                existingTab.classList.add('active');
+            } else {
+                const newTab = document.createElement('div');
+                newTab.className = 'tab closeable';
+                newTab.dataset.page = 'payment';
+                newTab.innerHTML = '<i class="fas fa-money-bill-wave"></i><span>付款</span><span class="close-btn"><i class="fas fa-times"></i></span>';
+                newTab.querySelector('.close-btn').addEventListener('click', function(e) {
+                    e.stopPropagation();
+                    newTab.remove();
+                    if (tabsContainer.querySelectorAll('.tab').length === 0) {
+                        document.querySelector('.nav-item[data-page="home"]').click();
+                    }
+                });
+                newTab.addEventListener('click', function() {
+                    tabsContainer.querySelectorAll('.tab').forEach(t => t.classList.remove('active'));
+                    this.classList.add('active');
+                    document.querySelectorAll('.page-content').forEach(p => p.classList.remove('active'));
+                    document.getElementById('homeContent').classList.remove('active');
+                    document.getElementById('paymentPage').classList.add('active');
+                });
+                tabsContainer.appendChild(newTab);
+                tabsContainer.querySelectorAll('.tab').forEach(t => t.classList.remove('active'));
+                newTab.classList.add('active');
+            }
+            document.getElementById('paymentPage').classList.add('active');
         }
 
         // Page navigation
